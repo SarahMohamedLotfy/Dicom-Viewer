@@ -1,0 +1,33 @@
+<!-- home page -->
+
+<div id="home-container">
+	<div id="buttons">
+	  <button type="button" id="buttoninput">Dicom<br/>Mgh/z<br/>Nifti<br/>Nrrd</button>
+	  <input id="filesinput" type="file"  multiple>
+	</div>
+</div>
+
+
+  <!-- the container for the renderers -->
+  <div id="my-gui-container"></div>
+ 
+	<div id="r3d"></div>
+
+
+  <image-cropper 
+      
+  [imageChangedEvent]="imageChangedEvent" 
+  [imageBase64]="dicomBase64" 
+  [maintainAspectRatio]="true" 
+  [aspectRatio]="1 / 1" 
+  [resizeToWidth]="200" 
+  resizeToHeight="200" format="png" 
+  (imageCropped)="imageCropped($event)" 
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()" 
+  (loadImageFailed)="loadImageFailed()"></image-cropper>
+  
+     <img [src]="croppedImage" />
+  
+   
+ 

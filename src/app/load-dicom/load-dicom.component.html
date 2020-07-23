@@ -1,0 +1,32 @@
+
+<div #screen>
+	<p>dsdfd</p>
+	<p>
+		Start editing to see some magic happen :)
+  </p>
+  <img src="assets/original.png" />
+
+
+</div>
+
+<h2>My Capture:</h2>
+<img src="{{img}}" />
+<div id="container1">
+ 
+   
+  <image-cropper 
+      
+  [imageChangedEvent]="imageChangedEvent" 
+  [imageBase64]="sss" 
+  [maintainAspectRatio]="true" 
+  [aspectRatio]="1 / 1" 
+  [resizeToWidth]="200" 
+  resizeToHeight="200" format="png" 
+  (imageCropped)="imageCropped($event)" 
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()" 
+  (loadImageFailed)="loadImageFailed()"></image-cropper>
+  
+     <img [src]="croppedImage" />
+  
+  </div>
