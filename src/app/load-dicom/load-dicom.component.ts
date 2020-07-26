@@ -4,13 +4,6 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import * as AMI from 'src/ami.min.js';
 import * as THREE from "src/three.min.js";
 import * as dat from 'src/dat.gui.min.js';
-import CamerasOrthographic from 'ami.js/src/cameras/cameras.orthographic';
-import ControlsOrthographic from 'ami.js/src/controls/controls.trackballortho';
-import CoreUtils from 'ami.js/src/core/core.utils';
-import HelpersStack from 'ami.js/src/helpers/helpers.stack';
-import LoadersVolume from 'ami.js/src/loaders/loaders.volume';
-import { colors, file } from './utils.js';
-
 
 let container;
 let renderer;
@@ -42,7 +35,7 @@ loadDicom()
   antialias: true,
 });
 renderer.setSize(container.offsetWidth, container.offsetHeight);
-renderer.setClearColor(colors.darkGrey, 1);
+renderer.setClearColor(0x353535, 1);
 renderer.setPixelRatio(window.devicePixelRatio);
 container.appendChild(renderer.domElement);
 
@@ -63,7 +56,7 @@ controls.staticMoving = true;
 controls.noRotate = true;
 camera.controls = controls;
 
-
+const file = 'https://cdn.rawgit.com/FNNDSC/data/master/nifti/adi_brain/adi_brain.nii.gz';
 const loader = new AMI.VolumeLoader(container);
 loader
   .load(file)
