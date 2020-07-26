@@ -1,23 +1,10 @@
+<div id="my-gui-container"></div>
+<div id="container"></div>
 
-<div #screen>
-	<p>dsdfd</p>
-	<p>
-		Start editing to see some magic happen :)
-  </p>
-  <img src="assets/original.png" />
-
-
-</div>
-
-<h2>My Capture:</h2>
-<img src="{{img}}" />
-<div id="container1">
- 
-   
-  <image-cropper 
+<image-cropper 
       
   [imageChangedEvent]="imageChangedEvent" 
-  [imageBase64]="sss" 
+  [imageBase64]="dicomBase64" 
   [maintainAspectRatio]="true" 
   [aspectRatio]="1 / 1" 
   [resizeToWidth]="200" 
@@ -29,4 +16,5 @@
   
      <img [src]="croppedImage" />
   
-  </div>
+  
+ 
