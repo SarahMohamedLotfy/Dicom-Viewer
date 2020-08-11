@@ -1,0 +1,73 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<br>
+
+<div style="width: 180px;  margin-top: 105px;
+float:left; height:50px; "> 
+  <p style="  font-family: Arial">Most Proximal Device</p>
+  
+</div>
+<div style="width: 10px; float:left;margin-top: 50px; height:50px;  "> Enable</div>
+<div class="MySelectorDiv" id="slideSource">
+
+<div style="width:150px; float:left;margin-top: 50px; height:50px;  "> 
+  
+  <br>
+  <br>
+  <input checked="checked" (change)="EnableCanvas($event)" value="angular" type="checkbox"/>
+
+  <p style=" margin-top: 70px"> InsertOrder</p>
+  <input  type="number" value="1" style="width :25%"  />
+
+</div>
+
+<div style="width: 340px; float:left; height:90px; ">
+  <form id ="slider" >
+<div style=" margin-left: 120px">
+		<input type="range" name="amountRange" min="0" max="100" value="{{rectWidth}}" oninput="this.form.amountInput.value=this.value , this.form.amountInput2.value=this.value,this.form.amountRange2.value=this.value" id ="rwidth" />
+		<input type="number" (keyup)="widthVerify($event)" value="{{rectWidth}}" name="amountInput" min="0" max="100" value="0" oninput="this.form.amountRange.value=this.value,this.form.amountInput2.value=this.value, this.form.amountRange2.value=this.value" id ="rwidth2" />
+</div>
+
+<canvas id="canvasss" style=" margin-left: 75px" style=" margin-top: 40px"  width=231 height=500></canvas>
+
+<canvas id="canvas2"style=" margin-left: 120px; margin-top: 20px; position : absolute" width=200 height=200></canvas>
+<canvas id="canvas3" style=" margin-left: 120px; margin-top: 20px; position : absolute"width=200 height=200></canvas>
+
+
+<div id="container"></div>
+<div  style="left : 460px ;top : 280px; position : absolute  ">
+  <input type="range" name="amountRange2" min="0" max="100" value="0" value="{{rectWidth}}" oninput="this.form.amountInput2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth3" />
+  <input type="number" (keyup)="widthVerify($event)" name="amountInput2" value="{{rectWidth}}" min="0" max="100" value="0" oninput="this.form.amountRange2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth4" />
+  </div>
+</form>
+
+</div >
+<div style="width: 100px; float:left; height:50px; margin-top: 38px; margin-left: 200px; ">
+
+  <p>Length</p>
+  <input style=" margin-bottom: 38px;width :60%"  type="number" value="100" (change)="lengthChange($event)" />
+
+  <div >
+    <input
+    type="radio"
+    name="dayOfTheWeek"
+    value="Sample"
+    checked="true"
+    (change)="radioChangeHandler($event)">
+    <i>Simple</i>
+    <br>
+    <br>
+
+    <input
+    type="radio"
+    name="dayOfTheWeek"
+    value="Complex"
+    (change)="radioChangeHandler($event)">
+    <i>Complex</i>
+</div>
+</div>
+
+
+
+
