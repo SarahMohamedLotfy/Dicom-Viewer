@@ -1,3 +1,4 @@
+
 <br>
 <div style="width: 180px;  margin-top: 105px; float:left; height:50px; "> 
   <p style="  font-family: Arial">Most Proximal Device</p> 
@@ -18,29 +19,29 @@
   <div style="width: 340px; float:left; height:90px; ">
     <form id ="sliderSimple" >
       <div style=" margin-left: 120px">
-        <input type="range" name="amountRange" min="0" max="100" value="{{rectWidth}}" oninput="this.form.amountInput.value=this.value , this.form.amountInput2.value=this.value,this.form.amountRange2.value=this.value" id ="rwidth" />
-        <input type="number" (keyup)="widthVerify($event)" value="{{rectWidth}}" name="amountInput" min="0" max="100" value="0" oninput="this.form.amountRange.value=this.value,this.form.amountInput2.value=this.value, this.form.amountRange2.value=this.value" id ="rwidth2" />
+        <input type="range" step="0.1" name="amountRange" min="0" max="100" value="{{rectWidth}}" oninput="this.form.amountInput.value=this.value , this.form.amountInput2.value=this.value,this.form.amountRange2.value=this.value" id ="rwidth" />
+        <input type="number" step="0.1"(keyup)="widthVerify($event)" value="{{rectWidth}}" name="amountInput" min="0" max="100" value="0" oninput="this.form.amountRange.value=this.value,this.form.amountInput2.value=this.value, this.form.amountRange2.value=this.value" id ="rwidth2" />
       </div>
 
       <canvas id="simpleCanvas" style=" margin-left: 75px" style=" margin-top: 40px"  width=231 height=500></canvas>
     
       <div  style="left : 460px ;top : 280px; position : absolute  ">
-        <input type="range" name="amountRange2" min="0" max="100" value="0" value="{{rectWidth}}" oninput="this.form.amountInput2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth3" />
-        <input type="number" (keyup)="widthVerify($event)" name="amountInput2" value="{{rectWidth}}" min="0" max="100" value="0" oninput="this.form.amountRange2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth4" />
+        <input type="range" step="0.1" name="amountRange2" min="0" max="100" value="0" value="{{rectWidth}}" oninput="this.form.amountInput2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth3" />
+        <input type="number" step="0.1" (keyup)="widthVerify($event)" name="amountInput2" value="{{rectWidth}}" min="0" max="100" value="0" oninput="this.form.amountRange2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth4" />
       </div>
     </form>
 
     <form id ="sliderComplex" >
       <div style=" margin-left: 120px">
-        <input type="range" name="amountRangeComplex" min="0" max="100" value="{{rectWidth}}" oninput="this.form.amountInputComplex.value=this.value " id ="rwidthCom" />
-        <input type="number" (keyup)="widthVerifyComplex($event)" value="{{rectWidth}}" name="amountInputComplex" min="0" max="100" value="0" oninput="this.form.amountRangeComplex.value=this.value" id ="rwidth2Com" />
+        <input type="range" step="0.1" name="amountRangeComplex" min="0" max="100" value="{{rectWidth}}" oninput="this.form.amountInputComplex.value=this.value " id ="rwidthCom" />
+        <input type="number" step="0.1"  (keyup)="widthVerifyComplex($event)" value="{{rectWidth}}" name="amountInputComplex" min="0" max="100" value="0" oninput="this.form.amountRangeComplex.value=this.value" id ="rwidth2Com" />
       </div>
       <canvas id="complexCanvas" style=" margin-left: 120px; margin-top: 20px; position : absolute" width={{rectWidth_intitial}} height={{rectLength_intitial+10}} style="border:1px solid rgb(253, 253, 253);"></canvas>
       <div id="roomAnchors" style=" margin-left: 120px; margin-top: 20px; position : absolute"></div>
       
       <div  style="left : 460px ;top : 280px; position : absolute  ">
-        <input type="range" name="amountRangeComplex2" min="0" max="100" value="0" value="{{rectWidth}}" oninput="this.form.amountInputComplex2.value=this.value" id ="rwidth3Com" />
-        <input type="number"  value="{{rectWidth}}" name="amountInputComplex2" min="0" max="100" value="0" oninput="this.form.amountRangeComplex2.value=this.value" id ="rwidth4Com" />
+        <input type="range" step="0.1" name="amountRangeComplex2" min="0" max="100" value="0" value="{{rectWidth}}" oninput="this.form.amountInputComplex2.value=this.value" id ="rwidth3Com" />
+        <input type="number" step="0.1" value="{{rectWidth}}" name="amountInputComplex2" min="0" max="100" value="0" oninput="this.form.amountRangeComplex2.value=this.value" id ="rwidth4Com" />
       </div>
     </form>
 

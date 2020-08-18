@@ -18,6 +18,7 @@ export class CylinderComponent implements OnInit {
   rectWidth_intitial =100;
   rectLength_intitial = 190;
   maxWidth =100;
+  disabledd: boolean = true;
 
   inputLength:number =100;
   rect;
