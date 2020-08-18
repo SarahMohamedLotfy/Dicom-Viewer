@@ -29,6 +29,16 @@ export class CylinderComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+
+    let div1 = document.getElementById('sliderComplex')
+    div1.style.display = "none";
+    let div3 = document.getElementById('lengthComplex')
+    div3.style.display = "none";
+    let div2 = document.getElementById('sliderSimple')
+    div2.style.display = "block";
+    let div4 = document.getElementById('lengthSimple')
+    div4.style.display = "block";
+
       var self =this;
       var canvas = <HTMLCanvasElement> document.getElementById('simpleCanvas'),
       ctx = canvas.getContext('2d'),
@@ -339,16 +349,16 @@ makeRoom(x, y, w, h,backgroundColor) {
             var self=this;
             $(document).ready(function()
             {
-                var w =$('#rwidth');
+                var w =$('#rwidthCom');
                 w.attr({min:0,max:100}).val( self.anchorTR.x());
             
-                var w =$('#rwidth2');
+                var w =$('#rwidth2Com');
                 w.attr({min:0,max:100}).val( self.anchorTR.x());
            
-                var w =$('#rwidth3');
+                var w =$('#rwidth3Com');
                 w.attr({min:0,max:100}).val( self.anchorBR.x());
     
-                var w =$('#rwidth4');
+                var w =$('#rwidth4Com');
                 w.attr({min:0,max:100}).val( self.anchorBR.x());
             })
             context.closePath();
@@ -359,7 +369,7 @@ makeRoom(x, y, w, h,backgroundColor) {
     var self=this;
     $(document).ready(function()
     {
-        var w =$('#rwidth');
+        var w =$('#rwidthCom');
         w.attr({min:0,max:100}).val(room.anchorTR.x());
         w.on('input change',self,function(){
             room.anchorTR.remove();
@@ -368,7 +378,7 @@ makeRoom(x, y, w, h,backgroundColor) {
             self.layer.draw();
         });
    
-        var w =$('#rwidth3');
+        var w =$('#rwidth3Com');
         w.attr({min:0,max:100}).val(room.anchorBR.x());
         w.on('input change',self,function(){
             room.anchorBR.remove();
@@ -406,18 +416,25 @@ radioChangeHandler (event: any) {
     var selectedCase = event.target.value;
     if (selectedCase =="Sample")
     {
-        let div1 = document.getElementById('complexCanvas')
-        let div2 = document.getElementById('simpleCanvas')
-        let div3 = document.getElementById('roomAnchors');
-
-        div2.style.display = "block"
-        div1.style.display = "none"
+        let divv1 = document.getElementById('sliderComplex')
+        divv1.style.display = "none";
+        let divv2 = document.getElementById('sliderSimple')
+        divv2.style.display = "block";
+        let div3 = document.getElementById('lengthComplex')
         div3.style.display = "none";
+        let div4 = document.getElementById('lengthSimple')
+        div4.style.display = "block";
     }
     else
     {
-        let div1= document.getElementById('simpleCanvas')
-        div1.style.display = "none"
+        let divv1 = document.getElementById('sliderComplex')
+        divv1.style.display = "block";
+        let divv2 = document.getElementById('sliderSimple')
+        divv2.style.display = "none";
+        let div3 = document.getElementById('lengthComplex')
+        div3.style.display = "block";
+        let div4 = document.getElementById('lengthSimple')
+        div4.style.display = "none";
 
         var stage = new Kinetic.Stage({
             container: 'roomAnchors',
@@ -427,11 +444,6 @@ radioChangeHandler (event: any) {
         this.layer = new Kinetic.Layer();
         stage.add(this.layer);
         var room1 = this.makeRoom(0, 0, 180, 180,this.backgroundColor);
-
-        let div2 = document.getElementById('complexCanvas');
-        let div3 = document.getElementById('roomAnchors');
-        div2.style.display = "block";
-        div3.style.display = "block";
     }
 }
 
@@ -476,7 +488,38 @@ lengthChange(event) {
         else{
             ctx.fillText(this.inputLength.toString(),130, 90);
         }
+}
 
+lengthChangeComplex(event) {
+    const inputValue = event.target.value;
+    var inputLengthComplex=parseInt( inputValue);
+    if (inputValue> this.maxLength)
+    {
+        alert("Length must be less than "+this.maxLength )
+    }
+    /*
+    var c =  <HTMLCanvasElement>document.getElementById("complexCanvas");
+    var ctx = c.getContext("2d");
+     ctx.font = "12px Arial";
+     ctx.fillStyle = "black";
+     ctx.fillText(Math.ceil(this.anchorTR.y()/2).toString(),3, 24);
+          
+     ctx.font = "12px Arial";
+     ctx.fillStyle = "black";
+     ctx.fillText(Math.ceil(((this.anchorBR.y()-this.anchorTR.y())/2)).toString(),3, 106);
+          
 
+     ctx.font = "12px Arial";
+     ctx.fillStyle = "black";
+     ctx.fillText(Math.ceil(((c.height-this.anchorBR.y())/2)).toString(),3, c.height-6);
+          
+    
+    if (inputLength>this.maxLength)
+    {
+    ctx.fillText(this.maxLength.toString(),130, 90);
+    }
+    else{
+        ctx.fillText(inputLength.toString(),130, 90);
+    }*/
 }
 }
