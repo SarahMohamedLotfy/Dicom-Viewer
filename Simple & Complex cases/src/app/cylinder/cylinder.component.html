@@ -33,14 +33,14 @@
     <form id ="sliderComplex" >
       <div style=" margin-left: 120px">
         <input type="range" name="amountRangeComplex" min="0" max="100" value="{{rectWidth}}" oninput="this.form.amountInputComplex.value=this.value " id ="rwidthCom" />
-        <input type="number" (keyup)="widthVerifyWidth($event)" value="{{rectWidth}}" name="amountInputComplex" min="0" max="100" value="0" oninput="this.form.amountRangeComplex.value=this.value" id ="rwidth2Com" />
+        <input type="number" (keyup)="widthVerifyComplex($event)" value="{{rectWidth}}" name="amountInputComplex" min="0" max="100" value="0" oninput="this.form.amountRangeComplex.value=this.value" id ="rwidth2Com" />
       </div>
-      <canvas id="complexCanvas" style=" margin-left: 120px; margin-top: 20px; position : absolute" width={{rectWidth_intitial}} height={{rectLength_intitial}} style="border:1px solid rgb(253, 253, 253);"></canvas>
+      <canvas id="complexCanvas" style=" margin-left: 120px; margin-top: 20px; position : absolute" width={{rectWidth_intitial}} height={{rectLength_intitial+10}} style="border:1px solid rgb(253, 253, 253);"></canvas>
       <div id="roomAnchors" style=" margin-left: 120px; margin-top: 20px; position : absolute"></div>
       
       <div  style="left : 460px ;top : 280px; position : absolute  ">
         <input type="range" name="amountRangeComplex2" min="0" max="100" value="0" value="{{rectWidth}}" oninput="this.form.amountInputComplex2.value=this.value" id ="rwidth3Com" />
-        <input type="number" (keyup)="widthVerify($event)" name="amountInputComplex2" value="{{rectWidth}}" min="0" max="100" value="0" oninput="this.form.amountRangeComplex2.value=this.value" id ="rwidth4Com" />
+        <input type="number"  value="{{rectWidth}}" name="amountInputComplex2" min="0" max="100" value="0" oninput="this.form.amountRangeComplex2.value=this.value" id ="rwidth4Com" />
       </div>
     </form>
 

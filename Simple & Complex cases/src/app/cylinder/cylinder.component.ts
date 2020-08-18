@@ -21,6 +21,10 @@ export class CylinderComponent implements OnInit {
 
   inputLength:number =100;
   rect;
+  ratio:number=1;
+  ratioMax:number=1;
+  inputLengthComplex;
+  room;
   layer;
   rectWidth:number;
   types: any = [
@@ -267,8 +271,10 @@ makeRoom(x, y, w, h,backgroundColor) {
     ctx.fillText("100".toString(),3, 20);
   
     ctx.fillStyle=backgroundColor;
+    var self=this;
 
-    var room = new Kinetic.Shape({
+    this.room = new Kinetic.Shape({
+        self:this,
         x: 0,
         y: 0,
         width: w,
@@ -276,120 +282,117 @@ makeRoom(x, y, w, h,backgroundColor) {
         stroke: self.rectColor,
         fill: self.rectColor,
         drawFunc: function (context) {
-            var x = this.x();
-            var y = this.y();
-            var w = this.width();
-            var h = this.height();
-            context.beginPath();
-
-            context.moveTo(0,0);
             ctx.clearRect(0,0,c.width,c.height);
 
-            ctx.fillStyle='#26C000';
+            ctx.fillStyle=self.rectColor;
             ctx.fillRect(0,0,c.width,c.height);
 
-            ctx.strokeStyle = backgroundColor;
-            ctx.stroke();
-            ctx.fillStyle=backgroundColor;
-            ctx.fillRect(this.anchorTR.x(),0,c.width-this.anchorTR.x(),this.anchorTR.y());
            
-            ctx.strokeStyle = backgroundColor;
-            ctx.stroke();
-            var sWidth = c.width;
-            var sHeight = c.height;
+            ctx.fillStyle=self.backgroundColor;
             var path=new Path2D();
-            path.moveTo(sWidth,0);
+            path.moveTo(this.anchorTR.x(),0);
+            path.lineTo(this.anchorTR.x(),this.anchorTR.y());
             path.lineTo(this.anchorBR.x(),this.anchorBR.y());
-            path.lineTo( this.anchorTR.x(),this.anchorTR.y());
-            
+            path.lineTo(this.anchorBR.x(),self.rectLength_intitial+10);
+            path.lineTo(self.rectWidth_intitial,self.rectLength_intitial+10);
+            path.lineTo( self.rectWidth_intitial,0);
+    
+            ctx.strokeStyle = self.backgroundColor;
+            ctx.stroke();
             ctx.fill(path);
 
-            ctx.fillStyle=backgroundColor;
-            ctx.strokeStyle = backgroundColor;
-            ctx.stroke();
-            var path2=new Path2D();
-            path2.moveTo(sWidth,0);
-            path2.lineTo(this.anchorBR.x(),this.anchorBR.y());
-            path2.lineTo( sWidth,this.anchorBR.y());
-
-            ctx.strokeStyle = backgroundColor;
-            ctx.stroke();
-            ctx.fill(path2);
-
-            ctx.fillRect(this.anchorBR.x(),this.anchorBR.y(),c.width-this.anchorBR.x(),c.height-this.anchorBR.y());
-
-            if (this.anchorBR.x()<this.anchorTR.x())
+        
+            if (self.inputLengthComplex>self.maxLength)
             {
-                ctx.fillStyle='#26C000';
-                var path3=new Path2D();
-                path3.moveTo(this.anchorBR.x(),this.anchorBR.y());
-                path3.lineTo(this.anchorTR.x(),this.anchorTR.y());
-                path3.lineTo( this.anchorTR.x(),0);
-    
-                ctx.strokeStyle = '#26C000';
-                ctx.stroke();
-                ctx.fill(path3);
+                ctx.fillStyle ='#26C000';
+                ctx.font = "12px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratioMax).toString(),3, 24);
+                     
+                ctx.font = "12px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(Math.ceil((((this.anchorBR.y()-this.anchorTR.y())/2))*self.ratioMax).toString(),3, 106);
+                     
+           
+                ctx.font = "12px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratioMax).toString(),3, c.height-6);
             }
-            ctx.fillStyle=backgroundColor;
-            ctx.strokeStyle = backgroundColor;
-
-            ctx.font = "12px Arial";
-            ctx.fillStyle = "black";
-            ctx.fillText(Math.ceil(this.anchorTR.y()/2).toString(),3, 24);
-          
-            ctx.font = "12px Arial";
-            ctx.fillStyle = "black";
-            ctx.fillText(Math.ceil(((this.anchorBR.y()-this.anchorTR.y())/2)).toString(),3, 106);
-          
-
-            ctx.font = "12px Arial";
-            ctx.fillStyle = "black";
-            ctx.fillText(Math.ceil(((c.height-this.anchorBR.y())/2)).toString(),3, c.height-6);
-          
-            var self=this;
+            else{
+                ctx.fillStyle ='#26C000';
+                ctx.font = "12px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratio).toString(),3, 24);
+                     
+                ctx.font = "12px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(Math.ceil((((this.anchorBR.y()-this.anchorTR.y())/2))*self.ratio).toString(),3, 106);
+                     
+                ctx.font = "12px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratio).toString(),3, c.height-6)
+            }
+            var selff =this;
             $(document).ready(function()
             {
                 var w =$('#rwidthCom');
-                w.attr({min:0,max:100}).val( self.anchorTR.x());
+                w.attr({min:0,max:100}).val( selff.anchorTR.x());
             
                 var w =$('#rwidth2Com');
-                w.attr({min:0,max:100}).val( self.anchorTR.x());
+                w.attr({min:0,max:100}).val( selff.anchorTR.x());
            
                 var w =$('#rwidth3Com');
-                w.attr({min:0,max:100}).val( self.anchorBR.x());
+                w.attr({min:0,max:100}).val( selff.anchorBR.x());
     
                 var w =$('#rwidth4Com');
-                w.attr({min:0,max:100}).val( self.anchorBR.x());
+                w.attr({min:0,max:100}).val( selff.anchorBR.x());
             })
             context.closePath();
             context.fillStrokeShape(this);
         }
     });
-    g.add(room);
+    g.add(this.room);
     var self=this;
     $(document).ready(function()
     {
         var w =$('#rwidthCom');
-        w.attr({min:0,max:100}).val(room.anchorTR.x());
+        w.attr({min:0,max:100}).val(self.room.anchorTR.x());
         w.on('input change',self,function(){
-            room.anchorTR.remove();
+            self.room.anchorTR.remove();
             var width=parseInt($(this).val().toString());
-            room.anchorTR = self.makeAnchor(width, room.anchorTR.y(), g,"blue");
+            self.room.anchorTR = self.makeAnchor(width, self.room.anchorTR.y(), g,"blue");
+            self.layer.draw();
+        });
+        var w =$('#rwidth2Com');
+        w.attr({min:0,max:100}).val(self.room.anchorTR.x());
+        w.on('input change',self,function(){
+            self.room.anchorTR.remove();
+            var width=parseInt($(this).val().toString());
+            self.room.anchorTR = self.makeAnchor(width, self.room.anchorTR.y(), g,"blue");
             self.layer.draw();
         });
    
         var w =$('#rwidth3Com');
-        w.attr({min:0,max:100}).val(room.anchorBR.x());
+        w.attr({min:0,max:100}).val(self.room.anchorBR.x());
         w.on('input change',self,function(){
-            room.anchorBR.remove();
+            self.room.anchorBR.remove();
             var width=parseInt($(this).val().toString());
-            g.add(room);
-            room.anchorBR = self.makeAnchor(width, room.anchorBR.y(), g,"red");
+            g.add(self.room);
+            self.room.anchorBR = self.makeAnchor(width, self.room.anchorBR.y(), g,"red");
+            self.layer.draw();
+        });
+        var w =$('#rwidth4Com');
+        w.attr({min:0,max:100}).val(self.room.anchorBR.x());
+        w.on('input change',self,function(){
+            self.room.anchorBR.remove();
+            var width=parseInt($(this).val().toString());
+            g.add(self.room);
+            self.room.anchorBR = self.makeAnchor(width, self.room.anchorBR.y(), g,"red");
             self.layer.draw();
         });
     })
-    room.anchorTR = this.makeAnchor(c.width, 0, g,"blue");
-    room.anchorBR = this.makeAnchor(c.width, c.height, g,"red");
+    this.room.anchorTR = this.makeAnchor(c.width, 0, g,"blue");
+    this.room.anchorBR = this.makeAnchor(c.width, c.height, g,"red");
 
     this.layer.draw();
 
@@ -465,7 +468,14 @@ widthVerify(event) {
         alert("width must be less than 100")
     }
 }
-
+widthVerifyComplex(event)
+{
+    const inputValue = event.target.value;
+    if (inputValue>this.maxWidth)
+    {
+        alert("width must be less than 100")
+    }
+}
 
 lengthChange(event) {
         const inputValue = event.target.value;
@@ -492,34 +502,65 @@ lengthChange(event) {
 
 lengthChangeComplex(event) {
     const inputValue = event.target.value;
-    var inputLengthComplex=parseInt( inputValue);
+   this.inputLengthComplex=parseInt( inputValue);
     if (inputValue> this.maxLength)
     {
         alert("Length must be less than "+this.maxLength )
     }
-    /*
+    
     var c =  <HTMLCanvasElement>document.getElementById("complexCanvas");
     var ctx = c.getContext("2d");
-     ctx.font = "12px Arial";
-     ctx.fillStyle = "black";
-     ctx.fillText(Math.ceil(this.anchorTR.y()/2).toString(),3, 24);
           
-     ctx.font = "12px Arial";
-     ctx.fillStyle = "black";
-     ctx.fillText(Math.ceil(((this.anchorBR.y()-this.anchorTR.y())/2)).toString(),3, 106);
-          
-
-     ctx.font = "12px Arial";
-     ctx.fillStyle = "black";
-     ctx.fillText(Math.ceil(((c.height-this.anchorBR.y())/2)).toString(),3, c.height-6);
-          
+     this.ratio = this.inputLengthComplex/this.inputLength;
+     this.ratioMax= this.maxLength/this.inputLength;
     
-    if (inputLength>this.maxLength)
+     ctx.clearRect(0,0,c.width,c.height);
+     ctx.fillStyle=this.rectColor;
+     ctx.fillRect(0,0,c.width,c.height);
+
+     ctx.fillStyle=this.backgroundColor;
+     var path=new Path2D();
+     path.moveTo(this.room.anchorTR.x(),0);
+     path.lineTo(this.room.anchorTR.x(),this.room.anchorTR.y());
+     path.lineTo(this.room.anchorBR.x(),this.room.anchorBR.y());
+     path.lineTo(this.room.anchorBR.x(),this.rectLength_intitial+10);
+     path.lineTo(this.rectWidth_intitial,this.rectLength_intitial+10);
+     path.lineTo( this.rectWidth_intitial,0);
+
+     ctx.strokeStyle = this.backgroundColor;
+     ctx.stroke();
+     ctx.fill(path);
+
+     
+
+    if (this.inputLengthComplex>this.maxLength)
     {
-    ctx.fillText(this.maxLength.toString(),130, 90);
+        ctx.fillStyle = this.rectColor;
+        console.log(this.rectColor);
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(Math.ceil((this.room.anchorTR.y()/2)*this.ratioMax).toString(),3, 24);
+             
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(Math.ceil((((this.room.anchorBR.y()-this.room.anchorTR.y())/2))*this.ratioMax).toString(),3, 106);
+             
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratioMax).toString(),3, c.height-6);
     }
     else{
-        ctx.fillText(inputLength.toString(),130, 90);
-    }*/
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(Math.ceil((this.room.anchorTR.y()/2)*this.ratio).toString(),3, 24);
+       
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(Math.ceil((((this.room.anchorBR.y()-this.room.anchorTR.y())/2))*this.ratio).toString(),3, 106);
+             
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratio).toString(),3, c.height-6);  
+    }
 }
 }
