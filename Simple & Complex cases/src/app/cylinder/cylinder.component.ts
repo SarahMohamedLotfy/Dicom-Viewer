@@ -16,9 +16,8 @@ export class CylinderComponent implements OnInit {
   maxLength :number=300;
   rectColor ='#26C000';
   rectWidth_intitial =100;
-  rectLength_intitial = 190;
+  rectLength_intitial = 200;
   maxWidth =100;
-  disabledd: boolean = true;
 
   inputLength:number =100;
   rect;
@@ -32,7 +31,8 @@ export class CylinderComponent implements OnInit {
     'Simple',
     'Complex'
   ];
-
+  isDisabled = false;
+  
   ngOnInit(): void {
 
     let div1 = document.getElementById('sliderComplex')
@@ -211,7 +211,7 @@ export class CylinderComponent implements OnInit {
 init(self);
 draw();
 
-
+if(this.disabledd)
 var width = self.rect.w;
 var w =$('#rwidth');
 w.attr({min:0,max:100}).val(width);
@@ -294,8 +294,8 @@ makeRoom(x, y, w, h,backgroundColor) {
             path.moveTo(this.anchorTR.x(),0);
             path.lineTo(this.anchorTR.x(),this.anchorTR.y());
             path.lineTo(this.anchorBR.x(),this.anchorBR.y());
-            path.lineTo(this.anchorBR.x(),self.rectLength_intitial+10);
-            path.lineTo(self.rectWidth_intitial,self.rectLength_intitial+10);
+            path.lineTo(this.anchorBR.x(),self.rectLength_intitial);
+            path.lineTo(self.rectWidth_intitial,self.rectLength_intitial);
             path.lineTo( self.rectWidth_intitial,0);
     
             ctx.strokeStyle = self.backgroundColor;
@@ -418,7 +418,7 @@ makeRoom(x, y, w, h,backgroundColor) {
 radioChangeHandler (event: any) {
     
     var selectedCase = event.target.value;
-    if (selectedCase =="Sample")
+    if (selectedCase =="Simple")
     {
         let divv1 = document.getElementById('sliderComplex')
         divv1.style.display = "none";
@@ -443,7 +443,7 @@ radioChangeHandler (event: any) {
         var stage = new Kinetic.Stage({
             container: 'roomAnchors',
             width: this.rectWidth_intitial+2,
-            height: this.rectLength_intitial +10
+            height: this.rectLength_intitial 
         });
         this.layer = new Kinetic.Layer();
         stage.add(this.layer);
@@ -524,8 +524,8 @@ lengthChangeComplex(event) {
      path.moveTo(this.room.anchorTR.x(),0);
      path.lineTo(this.room.anchorTR.x(),this.room.anchorTR.y());
      path.lineTo(this.room.anchorBR.x(),this.room.anchorBR.y());
-     path.lineTo(this.room.anchorBR.x(),this.rectLength_intitial+10);
-     path.lineTo(this.rectWidth_intitial,this.rectLength_intitial+10);
+     path.lineTo(this.room.anchorBR.x(),this.rectLength_intitial);
+     path.lineTo(this.rectWidth_intitial,this.rectLength_intitial);
      path.lineTo( this.rectWidth_intitial,0);
 
      ctx.strokeStyle = this.backgroundColor;
@@ -564,4 +564,7 @@ lengthChangeComplex(event) {
         ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratio).toString(),3, c.height-6);  
     }
 }
+flip() {
+    this.isDisabled = !this.isDisabled;
+  }
 }
