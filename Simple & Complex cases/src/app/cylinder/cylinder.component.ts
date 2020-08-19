@@ -304,7 +304,7 @@ makeRoom(x, y, w, h,backgroundColor) {
         
             if (self.inputLengthComplex>self.maxLength)
             {
-                ctx.fillStyle ='#26C000';
+                ctx.fillStyle =self.rectColor;
                 ctx.font = "12px Arial";
                 ctx.fillStyle = "black";
                 ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratioMax).toString(),3, 24);
@@ -319,7 +319,7 @@ makeRoom(x, y, w, h,backgroundColor) {
                 ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratioMax).toString(),3, c.height-6);
             }
             else{
-                ctx.fillStyle ='#26C000';
+                ctx.fillStyle =self.rectColor;
                 ctx.font = "12px Arial";
                 ctx.fillStyle = "black";
                 ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratio).toString(),3, 24);
