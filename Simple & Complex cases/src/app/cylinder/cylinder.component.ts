@@ -211,7 +211,6 @@ export class CylinderComponent implements OnInit {
 init(self);
 draw();
 
-if(this.disabledd)
 var width = self.rect.w;
 var w =$('#rwidth');
 w.attr({min:0,max:100}).val(width);
