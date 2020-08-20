@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Kinetic from 'src/kinetic.min.js';
 import * as  $ from 'jquery';
+import { TooltipWrapperComponent } from 'ng5-slider/tooltip-wrapper.component';
 
 @Component({
   selector: 'app-cylinder',
@@ -23,17 +24,29 @@ export class CylinderComponent implements OnInit {
   rect;
   ratio:number=1;
   ratioMax:number=1;
-  inputLengthComplex;
+  inputLengthComplex:number=100;
   room;
   layer;
+  anchor1x:number =0;
+  anchor1y:number=0;
+  anchor2y:number=0;
+  anchor2x:number=0;
   rectWidth:number;
   types: any = [
     'Simple',
     'Complex'
   ];
   isDisabled = false;
+  inputLengths = [];
+  topy:number = 24;
+  centery:number =  106;
+  bottomy:number=194;
+top;
+center;
+bottom;  
   
   ngOnInit(): void {
+    this.inputLengths.push(100);    // adds a new element (Lemon) to fruits
 
     let div1 = document.getElementById('sliderComplex')
     div1.style.display = "none";
@@ -204,7 +217,6 @@ export class CylinderComponent implements OnInit {
             }
         }else 
         {canvas.style.cursor='';
-        console.log(self.rect.w);
     }
 }
 
@@ -249,6 +261,8 @@ w.on('input change',self,function(){
 this.rectWidth=self.rect.w;
 }
 
+//////////////////////////////////////////////////////////////////complex/////////////////////////
+//#region complex case 
 makeRoom(x, y, w, h,backgroundColor) {
    
     var self=this;
@@ -281,13 +295,14 @@ makeRoom(x, y, w, h,backgroundColor) {
         height: h,
         stroke: self.rectColor,
         fill: self.rectColor,
+        self2:this,
         drawFunc: function (context) {
             ctx.clearRect(0,0,c.width,c.height);
 
             ctx.fillStyle=self.rectColor;
             ctx.fillRect(0,0,c.width,c.height);
 
-           
+            
             ctx.fillStyle=self.backgroundColor;
             var path=new Path2D();
             path.moveTo(this.anchorTR.x(),0);
@@ -301,37 +316,49 @@ makeRoom(x, y, w, h,backgroundColor) {
             ctx.stroke();
             ctx.fill(path);
 
-        
-            if (self.inputLengthComplex>self.maxLength)
-            {
-                ctx.fillStyle =self.rectColor;
-                ctx.font = "12px Arial";
-                ctx.fillStyle = "black";
-                ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratioMax).toString(),3, 24);
-                     
-                ctx.font = "12px Arial";
-                ctx.fillStyle = "black";
-                ctx.fillText(Math.ceil((((this.anchorBR.y()-this.anchorTR.y())/2))*self.ratioMax).toString(),3, 106);
-                     
            
-                ctx.font = "12px Arial";
-                ctx.fillStyle = "black";
-                ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratioMax).toString(),3, c.height-6);
-            }
-            else{
-                ctx.fillStyle =self.rectColor;
-                ctx.font = "12px Arial";
-                ctx.fillStyle = "black";
-                ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratio).toString(),3, 24);
-                     
-                ctx.font = "12px Arial";
-                ctx.fillStyle = "black";
-                ctx.fillText(Math.ceil((((this.anchorBR.y()-this.anchorTR.y())/2))*self.ratio).toString(),3, 106);
-                     
-                ctx.font = "12px Arial";
-                ctx.fillStyle = "black";
-                ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratio).toString(),3, c.height-6)
-            }
+           // console.log(self.ratio);
+           ctx.font = "12px Arial";
+           ctx.fillStyle = "black";
+           if (this.anchorTR.y()>42)
+           {
+               self.topy = this.anchorTR.y() -18;
+           }else{
+            self.topy=24;
+           }
+           if (this.anchorBR.y()<176)
+           {
+               self.bottomy = this.anchorBR.y() + 18;
+           }
+           else{
+            self.bottomy=194
+           }
+
+        self.centery =( (this.anchorBR.y()-this.anchorTR.y()) /2)+this.anchorTR.y();
+   
+        if (self.centery<40)
+        {
+            self.topy= self.topy-5;
+            self.centery=40;
+            console.log("hjvjhvjhvhj");
+        }
+        if (self.bottomy<60)
+        {
+            self.bottomy=60;
+        }
+        
+          if (self.inputLengthComplex>self.maxLength)
+          {
+              ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratioMax).toString(),3, self.topy);
+              ctx.fillText(Math.ceil((((this.anchorBR.y()-this.anchorTR.y())/2))*self.ratioMax).toString(),3, self.centery);
+              ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratioMax).toString(),3, self.bottomy);
+          }
+          else{
+              ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratio).toString(),3, self.topy);
+              ctx.fillText(Math.ceil((self.inputLengthComplex-(this.anchorBR.y()/2))*self.ratio).toString(),3,self.bottomy ); 
+              ctx.fillText(Math.ceil(((((this.anchorBR.y()-this.anchorTR.y())/2)))*self.ratio).toString(),3, self.centery); 
+            
+          }
             var selff =this;
             $(document).ready(function()
             {
@@ -347,6 +374,17 @@ makeRoom(x, y, w, h,backgroundColor) {
                 var w =$('#rwidth4Com');
                 w.attr({min:0,max:100}).val( selff.anchorBR.x());
             })
+            this.self2.anchor1y= this.anchorTR.y();
+            this.self2.anchor2y= this.anchorBR.y();
+            this.self2.anchor1x= this.anchorTR.x();
+            this.self2.anchor2x= this.anchorBR.x();
+            this.self2.top= (this.anchorTR.y());
+            this.self2.center = ((this.anchorBR.y()-this.anchorTR.y())/2);
+            this.self2.bottom = (this.self2.inputLengthComplex-(this.anchorBR.y())/2);
+
+            console.log(this.anchorBR.y());
+            console.log(this.anchorTR.y())
+
             context.closePath();
             context.fillStrokeShape(this);
         }
@@ -356,49 +394,49 @@ makeRoom(x, y, w, h,backgroundColor) {
     $(document).ready(function()
     {
         var w =$('#rwidthCom');
-        w.attr({min:0,max:100}).val(self.room.anchorTR.x());
+        w.attr({min:0,max:self.rectWidth_intitial}).val(self.room.anchorTR.x());
         w.on('input change',self,function(){
             self.room.anchorTR.remove();
             var width=parseInt($(this).val().toString());
-            self.room.anchorTR = self.makeAnchor(width, self.room.anchorTR.y(), g,"blue");
+            self.room.anchorTR = self.makeAnchor(width, self.room.anchorTR.y(), g,"blue","1");
             self.layer.draw();
         });
         var w =$('#rwidth2Com');
-        w.attr({min:0,max:100}).val(self.room.anchorTR.x());
+        w.attr({min:0,max:self.rectWidth_intitial}).val(self.room.anchorTR.x());
         w.on('input change',self,function(){
             self.room.anchorTR.remove();
             var width=parseInt($(this).val().toString());
-            self.room.anchorTR = self.makeAnchor(width, self.room.anchorTR.y(), g,"blue");
+            self.room.anchorTR = self.makeAnchor(width, self.room.anchorTR.y(), g,"blue","1");
             self.layer.draw();
         });
    
         var w =$('#rwidth3Com');
-        w.attr({min:0,max:100}).val(self.room.anchorBR.x());
+        w.attr({min:0,max:self.rectWidth_intitial}).val(self.room.anchorBR.x());
         w.on('input change',self,function(){
             self.room.anchorBR.remove();
             var width=parseInt($(this).val().toString());
-            g.add(self.room);
-            self.room.anchorBR = self.makeAnchor(width, self.room.anchorBR.y(), g,"red");
+            self.room.anchorBR = self.makeAnchor(width, self.room.anchorBR.y(), g,"red","2");
             self.layer.draw();
         });
         var w =$('#rwidth4Com');
-        w.attr({min:0,max:100}).val(self.room.anchorBR.x());
+        w.attr({min:0,max:self.rectWidth_intitial}).val(self.room.anchorBR.x());
         w.on('input change',self,function(){
             self.room.anchorBR.remove();
             var width=parseInt($(this).val().toString());
-            g.add(self.room);
-            self.room.anchorBR = self.makeAnchor(width, self.room.anchorBR.y(), g,"red");
+            self.room.anchorBR = self.makeAnchor(width, self.room.anchorBR.y(), g,"red","2");
             self.layer.draw();
         });
+        
+        
     })
-    this.room.anchorTR = this.makeAnchor(c.width, 0, g,"blue");
-    this.room.anchorBR = this.makeAnchor(c.width, c.height, g,"red");
-
+    this.room.anchorTR = this.makeAnchor(c.width, 0, g,"blue","1");
+    this.room.anchorBR = this.makeAnchor(c.width, c.height, g,"red","2");
+    this.room.self2=this;
     this.layer.draw();
 
 }
-
- makeAnchor(x, y, group,color) {
+ makeAnchor(x, y, group,color,name) {
+    var selfff=this;
     var anchor = new Kinetic.Circle({
         x: x,
         y: y,
@@ -406,36 +444,63 @@ makeRoom(x, y, w, h,backgroundColor) {
         fill: color,
         stroke: 'black',
         strokeWidth: 1,
-        draggable: true
+        draggable: true,
+        dragBoundFunc: function(pos) {
+            var X = pos.x;
+            var Y = pos.y;
+            if (name =="1")
+            {
+            if (Y > selfff.anchor2y) {
+              Y = selfff.anchor2y-8;
+            }
+            if (Y<0)
+              {
+                  Y=0;
+              }
+          }
+          else if (name=="2")
+          {
+            if (Y < selfff.anchor1y) {
+                Y = selfff.anchor1y+8;
+              }
+              if (Y>200)
+              {
+                  Y=200;
+              }
+          }
+          return ({
+            x: X,
+            y: Y
+          });
+        }
     });
     group.add(anchor);
     anchor.moveToTop();
     return (anchor);
 }
 
+////#endregion
 
 radioChangeHandler (event: any) {
     
     var selectedCase = event.target.value;
     if (selectedCase =="Simple")
     {
-        let divv1 = document.getElementById('sliderComplex')
-        divv1.style.display = "none";
-        let divv2 = document.getElementById('sliderSimple')
-        divv2.style.display = "block";
         let div3 = document.getElementById('lengthComplex')
         div3.style.display = "none";
+        let divv1 = document.getElementById('sliderComplex')
+        divv1.style.display = "none";
+        
         let div4 = document.getElementById('lengthSimple')
         div4.style.display = "block";
+        let divv2 = document.getElementById('sliderSimple')
+        divv2.style.display = "block";
     }
     else
     {
-        let divv1 = document.getElementById('sliderComplex')
-        divv1.style.display = "block";
         let divv2 = document.getElementById('sliderSimple')
         divv2.style.display = "none";
-        let div3 = document.getElementById('lengthComplex')
-        div3.style.display = "block";
+        
         let div4 = document.getElementById('lengthSimple')
         div4.style.display = "none";
 
@@ -447,17 +512,23 @@ radioChangeHandler (event: any) {
         this.layer = new Kinetic.Layer();
         stage.add(this.layer);
         var room1 = this.makeRoom(0, 0, 180, 180,this.backgroundColor);
+
+        let div3 = document.getElementById('lengthComplex')
+        div3.style.display = "block";
+
+        let divv1 = document.getElementById('sliderComplex')
+        divv1.style.display = "block";
     }
 }
 
 EnableCanvas(values:any){
     if (values.currentTarget.checked == true)
     {
-        $(".simpleDiv").fadeTo(300, 1);
+        $(".allDiv").fadeTo(300, 1);
     }
     else
     {
-        $(".simpleDiv").fadeTo(300, 0.2);
+        $(".allDiv").fadeTo(300, 0.2);
     }
 }
 
@@ -501,19 +572,20 @@ lengthChange(event) {
 }
 
 lengthChangeComplex(event) {
-    const inputValue = event.target.value;
+   const inputValue = event.target.value;
    this.inputLengthComplex=parseInt( inputValue);
     if (inputValue> this.maxLength)
     {
         alert("Length must be less than "+this.maxLength )
     }
-    
+    this.inputLengths.push(this.inputLengthComplex);    // adds a new element (Lemon) to fruits
+
     var c =  <HTMLCanvasElement>document.getElementById("complexCanvas");
     var ctx = c.getContext("2d");
           
-     this.ratio = this.inputLengthComplex/this.inputLength;
-     this.ratioMax= this.maxLength/this.inputLength;
-    
+     this.ratio = this.inputLengthComplex /  this.inputLengths[this.inputLengths.length -2];
+     this.ratioMax= this.maxLength/this.inputLengths[this.inputLengths.length -1];
+   
      ctx.clearRect(0,0,c.width,c.height);
      ctx.fillStyle=this.rectColor;
      ctx.fillRect(0,0,c.width,c.height);
@@ -531,36 +603,27 @@ lengthChangeComplex(event) {
      ctx.stroke();
      ctx.fill(path);
 
+     ctx.fillStyle = this.rectColor;
+     ctx.font = "12px Arial";
+     ctx.fillStyle = "black";
      
+    this.top =  this.top *this.ratio;
+    this.center =  this.center *this.ratio;
+    this.bottom =  this.bottom *this.ratio;
 
+    var topmax =  this.top *this.ratioMax;
+    var centermax =  this.center *this.ratioMax;
+    var bottommax =  this.bottom *this.ratioMax;
     if (this.inputLengthComplex>this.maxLength)
     {
-        ctx.fillStyle = this.rectColor;
-        console.log(this.rectColor);
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(Math.ceil((this.room.anchorTR.y()/2)*this.ratioMax).toString(),3, 24);
-             
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(Math.ceil((((this.room.anchorBR.y()-this.room.anchorTR.y())/2))*this.ratioMax).toString(),3, 106);
-             
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratioMax).toString(),3, c.height-6);
+        ctx.fillText(Math.ceil((this.room.anchorTR.y()/2)*this.ratioMax).toString(),3, this.topy);
+        ctx.fillText(Math.ceil((((this.room.anchorBR.y()-this.room.anchorTR.y())/2))*this.ratioMax).toString(),3, this.centery);
+        ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratioMax).toString(),3, this.bottomy);
     }
     else{
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(Math.ceil((this.room.anchorTR.y()/2)*this.ratio).toString(),3, 24);
-       
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(Math.ceil((((this.room.anchorBR.y()-this.room.anchorTR.y())/2))*this.ratio).toString(),3, 106);
-             
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratio).toString(),3, c.height-6);  
+        ctx.fillText(Math.ceil(this.top).toString(),3, this.topy);
+        ctx.fillText(Math.ceil(this.center).toString(),3, this.centery);
+        ctx.fillText(Math.ceil(this.bottom).toString(),3,this.bottomy );  
     }
 }
 flip() {
