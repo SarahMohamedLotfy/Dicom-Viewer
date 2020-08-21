@@ -37,17 +37,12 @@ export class CylinderComponent implements OnInit {
     'Complex'
   ];
   isDisabled = false;
-  inputLengths = [];
   topy:number = 24;
   centery:number =  106;
   bottomy:number=194;
-top;
-center;
-bottom;  
-  
-  ngOnInit(): void {
-    this.inputLengths.push(100);    // adds a new element (Lemon) to fruits
 
+  ngOnInit(): void {
+    
     let div1 = document.getElementById('sliderComplex')
     div1.style.display = "none";
     let div3 = document.getElementById('lengthComplex')
@@ -340,7 +335,6 @@ makeRoom(x, y, w, h,backgroundColor) {
         {
             self.topy= self.topy-5;
             self.centery=40;
-            console.log("hjvjhvjhvhj");
         }
         if (self.bottomy<60)
         {
@@ -349,15 +343,14 @@ makeRoom(x, y, w, h,backgroundColor) {
         
           if (self.inputLengthComplex>self.maxLength)
           {
-              ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratioMax).toString(),3, self.topy);
-              ctx.fillText(Math.ceil((((this.anchorBR.y()-this.anchorTR.y())/2))*self.ratioMax).toString(),3, self.centery);
-              ctx.fillText(Math.ceil((((c.height-this.anchorBR.y())/2))*self.ratioMax).toString(),3, self.bottomy);
+            ctx.fillText(Math.round(Math.round(this.anchorTR.y()/2)*self.ratioMax).toString(),3, self.topy);
+            ctx.fillText(Math.round(((Math.round(this.anchorBR.y()/2)-Math.round(this.anchorTR.y()/2)))*self.ratioMax).toString(),3, self.centery);
+            ctx.fillText(Math.round((c.height/2-Math.round(this.anchorBR.y()/2))*self.ratioMax).toString(),3, self.bottomy);          
           }
           else{
-              ctx.fillText(Math.ceil((this.anchorTR.y()/2)*self.ratio).toString(),3, self.topy);
-              ctx.fillText(Math.ceil((self.inputLengthComplex-(this.anchorBR.y()/2))*self.ratio).toString(),3,self.bottomy ); 
-              ctx.fillText(Math.ceil(((((this.anchorBR.y()-this.anchorTR.y())/2)))*self.ratio).toString(),3, self.centery); 
-            
+            ctx.fillText(Math.round(Math.round(this.anchorTR.y()/2)*self.ratio).toString(),3, self.topy);
+            ctx.fillText(Math.round(((Math.round(this.anchorBR.y()/2)-Math.round(this.anchorTR.y()/2)))*self.ratio).toString(),3, self.centery);
+            ctx.fillText(Math.round((c.height/2-Math.round(this.anchorBR.y()/2))*self.ratio).toString(),3, self.bottomy);          
           }
             var selff =this;
             $(document).ready(function()
@@ -378,13 +371,7 @@ makeRoom(x, y, w, h,backgroundColor) {
             this.self2.anchor2y= this.anchorBR.y();
             this.self2.anchor1x= this.anchorTR.x();
             this.self2.anchor2x= this.anchorBR.x();
-            this.self2.top= (this.anchorTR.y());
-            this.self2.center = ((this.anchorBR.y()-this.anchorTR.y())/2);
-            this.self2.bottom = (this.self2.inputLengthComplex-(this.anchorBR.y())/2);
-
-            console.log(this.anchorBR.y());
-            console.log(this.anchorTR.y())
-
+            
             context.closePath();
             context.fillStrokeShape(this);
         }
@@ -578,13 +565,12 @@ lengthChangeComplex(event) {
     {
         alert("Length must be less than "+this.maxLength )
     }
-    this.inputLengths.push(this.inputLengthComplex);    // adds a new element (Lemon) to fruits
 
     var c =  <HTMLCanvasElement>document.getElementById("complexCanvas");
     var ctx = c.getContext("2d");
           
-     this.ratio = this.inputLengthComplex /  this.inputLengths[this.inputLengths.length -2];
-     this.ratioMax= this.maxLength/this.inputLengths[this.inputLengths.length -1];
+     this.ratio = this.inputLengthComplex /  (this.rectLength_intitial/2);
+     this.ratioMax= this.maxLength/(this.rectLength_intitial/2);
    
      ctx.clearRect(0,0,c.width,c.height);
      ctx.fillStyle=this.rectColor;
@@ -606,24 +592,18 @@ lengthChangeComplex(event) {
      ctx.fillStyle = this.rectColor;
      ctx.font = "12px Arial";
      ctx.fillStyle = "black";
-     
-    this.top =  this.top *this.ratio;
-    this.center =  this.center *this.ratio;
-    this.bottom =  this.bottom *this.ratio;
 
-    var topmax =  this.top *this.ratioMax;
-    var centermax =  this.center *this.ratioMax;
-    var bottommax =  this.bottom *this.ratioMax;
+   
     if (this.inputLengthComplex>this.maxLength)
     {
-        ctx.fillText(Math.ceil((this.room.anchorTR.y()/2)*this.ratioMax).toString(),3, this.topy);
-        ctx.fillText(Math.ceil((((this.room.anchorBR.y()-this.room.anchorTR.y())/2))*this.ratioMax).toString(),3, this.centery);
-        ctx.fillText(Math.ceil((((c.height-this.room.anchorBR.y())/2))*this.ratioMax).toString(),3, this.bottomy);
+        ctx.fillText(Math.round(Math.round(this.room.anchorTR.y()/2)*this.ratioMax).toString(),3, this.topy);
+        ctx.fillText(Math.round(((Math.round(this.room.anchorBR.y()/2)-Math.round(this.room.anchorTR.y()/2)))*this.ratioMax).toString(),3, this.centery);
+        ctx.fillText(Math.round((c.height/2-Math.round(this.room.anchorBR.y()/2))*this.ratioMax).toString(),3, this.bottomy);           
     }
     else{
-        ctx.fillText(Math.ceil(this.top).toString(),3, this.topy);
-        ctx.fillText(Math.ceil(this.center).toString(),3, this.centery);
-        ctx.fillText(Math.ceil(this.bottom).toString(),3,this.bottomy );  
+        ctx.fillText(Math.round(Math.round(this.room.anchorTR.y()/2)*this.ratio).toString(),3, this.topy);
+        ctx.fillText(Math.round(((Math.round(this.room.anchorBR.y()/2)-Math.round(this.room.anchorTR.y()/2)))*this.ratio).toString(),3, this.centery);
+        ctx.fillText(Math.round((c.height/2-Math.round(this.room.anchorBR.y()/2))*this.ratio).toString(),3, this.bottomy);          
     }
 }
 flip() {
