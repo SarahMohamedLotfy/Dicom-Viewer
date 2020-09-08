@@ -1,0 +1,20 @@
+<div id="my-gui-container"></div>
+<div id="container"></div>
+
+<image-cropper 
+      
+  [imageChangedEvent]="imageChangedEvent" 
+  [imageBase64]="dicomBase64" 
+  [maintainAspectRatio]="true" 
+  [aspectRatio]="1 / 1" 
+  [resizeToWidth]="200" 
+  resizeToHeight="200" format="png" 
+  (imageCropped)="imageCropped($event)" 
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()" 
+  (loadImageFailed)="loadImageFailed()"></image-cropper>
+  
+     <img [src]="croppedImage" />
+  
+  
+ 

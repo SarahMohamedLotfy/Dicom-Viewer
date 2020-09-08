@@ -1,0 +1,25 @@
+<h3 class="angle">Graft Rotation {{angle}} </h3>
+<h3 class="R">R </h3>
+<h3 class="L">L </h3>
+
+<div id="canvas"></div>
+<div id="pointer">
+    <p class="lpsl">lpsl</p>
+</div>
+<div id="pointer2">
+    <p class="lpsa">lpsa</p>
+</div>
+
+<div class="simulated-line"></div>
+
+<canvas id="myCanvas" width="180" height="60" ></canvas>
+
+
+<img src="https://www.w3schools.com/tags/planets.gif" width="145" height="126"
+     alt="Planets" usemap="#planetmap">
+
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" alt="Sun" id="Sun" (click)="ImageClick()">
+  <area shape="circle" coords="90,58,3" alt="Mercury" id="Mercury" (click)="ImageClick2()">
+  <area shape="circle" coords="124,58,8" alt="Venus" id="Venus" (click)="ImageClick3()">
+</map>

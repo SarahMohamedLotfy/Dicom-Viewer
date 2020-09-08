@@ -1,0 +1,31 @@
+
+body{ background-color: ivory; }
+
+#rwidth
+{
+  position: relative;
+  padding-left: 20;
+  padding-right: 20;
+  padding-bottom: 20;
+  margin-bottom: 10;
+}
+span{
+  font-weight: bold;
+}
+#stage-parent {
+  width: 100%;
+}
+p b{
+  color: #800000;
+}
+
+#slideSource {
+  opacity: 1;
+  transition: opacity 1s; 
+}
+
+#slideSource.fade {
+  opacity: 0;
+}
+
+
