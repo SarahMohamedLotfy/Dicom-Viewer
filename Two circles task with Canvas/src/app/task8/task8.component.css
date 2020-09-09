@@ -1,0 +1,79 @@
+html,
+body {
+  height: 100%;
+}
+#canvas4
+{
+  position: absolute;
+  top: 19%;
+  left: 43%;
+}
+
+  .angle
+  {
+    position: absolute;
+    top: 10%;
+    left: 43%;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+  }
+  .R
+  {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+  }
+  .L
+  {
+    position: absolute;
+    top: 25%;
+    left: 58%;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+  }
+  .P
+  {
+    position: absolute;
+    top: 36%;
+    left: 49%;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+  }
+  #myCanvas
+  {
+    position: absolute;
+    top: 47%;
+    left: 43%;
+    border:2px solid #87FF2A;
+  }
+  img {
+    position: absolute;
+    top: 60%;
+    left: 43%;   
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none; 
+  }
+  .as-console-wrapper { max-height: 2.8em !important; }
+
+  
