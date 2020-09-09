@@ -4,10 +4,10 @@ body {
 }
 
 #canvas {
-  background: red;
+  background: white;
   position: absolute;
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   top: 30%;
   left: 50%;
   margin-top: -30px;
@@ -25,10 +25,6 @@ body {
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
   border-radius: 60px;
-  margin-top: -30px;
-  margin-left: -30px;
-  top:30%;
-  left: 50%;
   border: solid black 1px;
 }
 
@@ -40,10 +36,6 @@ body {
     -webkit-border-radius: 60px;
     -moz-border-radius: 60px;
     border-radius: 60px;
-    margin-top: -30px;
-    margin-left: -40px;
-    top:30%;
-    left: 50%;
     border: solid yellow 1px;
   }
 
@@ -52,8 +44,8 @@ body {
     width: 161px;
     height: 2px;
     background: #87FF2A    ;
-    top: 25.5%;
-    left: 45%;
+    top: 30%;
+    left: 48%;
     transform-origin: 0% 50%;
     transform: rotate(25deg);
   }
@@ -62,32 +54,62 @@ body {
     position: absolute;
 
     top: 10%;
-    left: 43%;
+    left: 45%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
   }
   .R
   {
     position: absolute;
     top: 25%;
-    left: 40%;
+    left: 42%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
   }
   .L
   {
     position: absolute;
     top: 25%;
-    left: 58%;
+    left: 60%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+  }
+  .P
+  {
+    position: absolute;
+    top: 38%;
+    left: 52%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
   }
   #myCanvas
   {
     position: absolute;
-    top: 45%;
-    left: 43%;
+    top: 50%;
+    left: 45%;
     border:2px solid #87FF2A;
   }
   img {
    
     position: absolute;
-    top: 58%;
-    left: 43%;    
+    top: 65%;
+    left: 45%;    
     
   }
   .lpsl
@@ -115,3 +137,5 @@ body {
   }
 
   .as-console-wrapper { max-height: 2.8em !important; }
+
+  
