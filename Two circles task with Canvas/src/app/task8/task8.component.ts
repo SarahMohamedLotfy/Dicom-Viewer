@@ -226,13 +226,13 @@ function drawAll(){
 
 }
 first() {
-  console.log("First region is clicked");
+  alert("First region is clicked");
 }
 middle() {
-  console.log("Second region is clicked");
+  alert("Second region is clicked");
 }
 last() {
-  console.log("Third region is clicked");
+  alert("Third region is clicked");
 }
 
 }
