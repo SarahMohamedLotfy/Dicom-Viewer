@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="kinetic.min.js"></script>
+
+        <style>
+          #slideSource {
+              opacity: 1;
+              transition: opacity 1s; 
+            }
+            #slideSource.fade {
+                opacity: 0;} 
+            </style>
+    </head>
+<body>
+    
+<br>
+<div style="width: 180px;  margin-top: 105px; float:left; height:50px; "> 
+  <p style="  font-family: Arial">Most Proximal Device</p> 
+</div>
+
+<div style="width: 10px; float:left;margin-top: 50px; height:50px;"> Enable</div>
+
+<div class="allDiv" id="slideSource" >
+  
+  <div style="width:150px; float:left;margin-top: 50px; height:50px; "> 
+    <br>
+    <br>
+    <input checked="checked"  onchange= "EnableCanvas(this)" value="angular" type="checkbox"/>
+    <p style=" margin-top: 70px"> InsertOrder</p>
+    <input  type="number" id ="insertOrder" value="1" style="width :25%"  />
+  </div>
+  
+  <div style="width: 340px; float:left; height:90px; ">
+    <form  id ="sliderSimple" >
+      <div style=" margin-left: 110px">
+        <input  type="range" step="0.1" name="amountRange" min="0" max="100"  oninput="this.form.amountInput.value=this.value , this.form.amountInput2.value=this.value,this.form.amountRange2.value=this.value" id ="rwidth" />
+        <input  type="number" step="0.1"onchange="widthVerify(this)"  name="amountInput" min="0" max="100" oninput="this.form.amountRange.value=this.value,this.form.amountInput2.value=this.value, this.form.amountRange2.value=this.value" id ="rwidth2" />
+      </div>
+
+      <canvas  id="simpleCanvas" style=" margin-left: 0px; margin-top: 20px"  width=231 height=500></canvas>
+    
+      <div  style="left : 460px ;top : 280px; position : absolute  ">
+        <input  type="range" step="0.1" name="amountRange2" min="0" max="100"  oninput="this.form.amountInput2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth3" />
+        <input type="number" step="0.1" onchange="widthVerify(this)" name="amountInput2"  min="0" max="100"  oninput="this.form.amountRange2.value=this.value, this.form.amountInput.value=this.value,this.form.amountRange.value=this.value" id ="rwidth4" />
+      </div>
+    </form>
+
+    <form id ="sliderComplex" >
+      <div style=" margin-left: 120px">
+        <input  type="range"  name="amountRangeComplex" min="0" max="100"  oninput="this.form.amountInputComplex.value=this.value " id ="rwidthCom" />
+        <input  type="number"   onchange="widthVerifyComplex(this)"  name="amountInputComplex" min="0" max="100" value="0" oninput="this.form.amountRangeComplex.value=this.value" id ="rwidth2Com" />
+      </div>
+      <canvas  id="complexCanvas" style=" margin-left: 9px; margin-top: 0px; position : absolute" width=100 height=200 style="border:1px solid rgb(253, 253, 253);"></canvas>
+      <div  id="roomAnchors" style=" margin-left: 124px; margin-top: 20px; position : absolute"></div>
+      
+      <div  style="left : 460px ;top : 280px; position : absolute  ">
+        <input  type="range"  name="amountRangeComplex2" min="0" max="100" value="0"  oninput="this.form.amountInputComplex2.value=this.value" id ="rwidth3Com" />
+        <input  type="number"    name="amountInputComplex2" min="0" max="100" value="0" oninput="this.form.amountRangeComplex2.value=this.value" id ="rwidth4Com" />
+      </div>
+    </form>
+
+  </div >
+  <div style="width: 100px; float:left; height:50px; margin-top: 38px; margin-left: 200px; ">
+    <p>Length</p>
+    <input  id ="lengthSimple" style=" margin-bottom: 38px;width :60%"  type="number" value="100" onchange="lengthChange(this)" />
+    <input  id ="lengthComplex" style=" margin-bottom: 38px;width :60%"  type="number" value="100" onchange="lengthChangeComplex(this)" />
+
+    <div >
+      <input id ="radio1"type="radio" name="cases" value="Simple" checked="true" onchange="radioChangeHandler(this)">
+      <i>Simple</i>
+      <br> <br>
+      <input  id="radio2" type="radio" name="cases" value="Complex" onchange="radioChangeHandler(this)">
+      <i>Complex</i>
+    </div>
+  </div>
+</div>
+<script>
+
+  
+    //Inputs
+  var backgroundColor='white';
+  var maxLength =300;
+  var rectColor ='#26C000';
+  var rectWidth_intitial =100;
+  var rectLength_intitial = 200;
+  var maxWidth =100;
+
+  var inputLength =100;
+  var rect;
+  var ratio=1;
+  var ratioMax=1;
+  var inputLengthComplex=100;
+  var room;
+  var layer;
+  var anchor1x =0;
+  var anchor1y=0;
+  var anchor2y=0;
+  var anchor2x=0;
+  var rectWidth;
+  var types = [
+    'Simple',
+    'Complex'
+  ];
+  var topy = 24;
+  var centery =  106;
+  var bottomy=194;
+
+ 
+  let div1 = document.getElementById('sliderComplex')
+    div1.style.display = "none";
+    let div3 = document.getElementById('lengthComplex')
+    div3.style.display = "none";
+    let div2 = document.getElementById('sliderSimple')
+    div2.style.display = "block";
+    let div4 = document.getElementById('lengthSimple')
+    div4.style.display = "block";
+
+      var canvas =  document.getElementById('simpleCanvas'),
+      ctx = canvas.getContext('2d'),
+      handlesSize = 8,
+      currentHandle = false,
+      drag = false;
+      rectWidth=3;
+
+      rect = {
+            x: 130,
+            y:0,
+            w: rectWidth_intitial,
+            h: rectLength_intitial
+        };
+
+        function init() {
+        canvas.addEventListener('mousedown', mouseDown, false);
+        canvas.addEventListener('mouseup', mouseUp, false);
+        canvas.addEventListener('mousemove',mouseMove, false);
+    }
+    
+    function point(x, y) {
+        return {
+            x: x,
+            y: y
+        };
+    }
+    
+    function dist(p1, p2) {
+        return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
+    }
+    
+    function getHandle(mouse) {
+        if (dist(mouse, point(rect.x, rect.y)) <= handlesSize) return 'topleft';
+        if (dist(mouse, point(rect.x + rect.w, rect.y)) <= handlesSize) return 'topright';
+        if (dist(mouse, point(rect.x, rect.y + rect.h)) <= handlesSize) return 'bottomleft';
+        if (dist(mouse, point(rect.x + rect.w,rect.y + rect.h)) <= handlesSize) return 'bottomright';
+        if (dist(mouse, point(rect.x + rect.w / 2, rect.y)) <= handlesSize) return 'top';
+        if (dist(mouse, point(rect.x,  rect.y + rect.h / 2)) <= handlesSize) return 'left';
+        if (dist(mouse, point(rect.x + rect.w / 2, rect.y + rect.h)) <= handlesSize) return 'bottom';
+        if (dist(mouse, point(rect.x + rect.w, rect.y + rect.h / 2)) <= handlesSize) return 'right';
+        return false;
+    }
+    
+    function mouseDown(e) {
+        if (currentHandle) drag = true;
+        draw();
+    }
+    
+    function mouseUp() {
+        drag = false;
+        currentHandle = false;
+        draw();
+    }
+    rectWidth=50;
+    function mouseMove(e) {
+        var previousHandle = currentHandle;
+        if (!drag) currentHandle = getHandle(point(e.pageX - this.offsetLeft, e.pageY - this.offsetTop));
+        if (currentHandle && drag) {
+            var mousePos = point(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+            switch (currentHandle) {
+                case 'topleft':
+                   rect.w += rect.x - mousePos.x;
+                    rect.h += rect.y - mousePos.y;
+                    rect.x = mousePos.x;
+                   rect.y = mousePos.y;
+                    rectWidth=rect.w;
+
+                    break;
+                case 'topright':
+                    rect.w = mousePos.x - rect.x;
+                    rect.h += rect.y - mousePos.y;
+                    rect.y = mousePos.y;
+                    rectWidth=rect.w;
+                    break;
+                case 'bottomleft':
+                   rect.w += rect.x - mousePos.x;
+                    rect.x = mousePos.x;
+                   rect.h = mousePos.y - rect.y;
+                    rectWidth=rect.w;
+                    break;
+                case 'bottomright':
+                    rect.w = mousePos.x -rect.x;
+                    rect.h = mousePos.y - rect.y;
+                    rectWidth=rect.w;
+                    break;
+    
+                case 'top':
+                    rect.h += rect.y - mousePos.y;
+                    rect.y = mousePos.y;
+                    rectWidth=rect.w;
+                    break;
+    
+                case 'left':
+                    rect.w += rect.x - mousePos.x;
+                    rect.x = mousePos.x;
+                    rectWidth=rect.w;
+                    break;
+    
+                case 'bottom':
+                    rect.h = mousePos.y - rect.y;
+                    rectWidth=rect.w;
+                    break;
+    
+                case 'right':
+                    rect.w = mousePos.x - rect.x;
+                   rectWidth=rect.w;
+                    break;
+            }
+            document.getElementById("rwidth").value = rectWidth;
+            document.getElementById("rwidth2").value = rectWidth;
+            document.getElementById("rwidth3").value = rectWidth;
+            document.getElementById("rwidth4").value = rectWidth;
+        }
+        if (drag || currentHandle != previousHandle) draw();
+    }
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = rectColor;
+        ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+        ctx.font = "15px Arial";
+        ctx.fillStyle = "black";
+        if (inputLength<=maxLength)
+        {
+        ctx.fillText(inputLength.toString(),130, 90);
+        }
+        else{
+            ctx.fillText(maxLength.toString(),130, 90);
+        }
+      
+        if (currentHandle) {
+            var posHandle = point(0, 0);
+            var dir;
+            switch (currentHandle) {
+                case 'topleft':
+                    dir={x:rect.w>0?'w':'e',y:rect.h>0?'n':'s'};
+                    canvas.style.cursor= dir.y+dir.x+'-resize';
+                case 'topright':
+                    dir={x:rect.w>0?'e':'w',y:rect.h>0?'n':'s'};
+                    canvas.style.cursor= dir.y+dir.x+'-resize';
+                case 'bottomleft':
+                    dir={x:rect.w>0?'w':'e',y:rect.h>0?'s':'n'};
+                    canvas.style.cursor= dir.y+dir.x+'-resize';
+                case 'bottomright':
+                    dir={x:rect.w>0?'e':'w',y:rect.h>0?'s':'n'};
+                    canvas.style.cursor= dir.y+dir.x+'-resize';
+                    break;
+                case 'top':
+                    canvas.style.cursor= (rect.h>0?'n':'s')+'-resize';
+                    break;
+                case 'left':
+                    canvas.style.cursor= (rect.w>0?'w':'e')+'-resize';
+                    break;
+                case 'bottom':
+                    canvas.style.cursor= (rect.h>0?'s':'n')+'-resize';
+                    break;
+                case 'right':
+                    canvas.style.cursor= (rect.w>0?'e':'w')+'-resize';
+                    break;
+            }
+        }else 
+        {canvas.style.cursor='';
+    }
+}
+
+init();
+draw();   
+
+var width =rect.w;
+var w =$('#rwidth');
+w.attr({min:0,max:100}).val(width);
+w.on('input change',function(){
+    width=parseInt($(this).val().toString());
+    rect.w= width;
+    draw();
+});
+
+var width = rect.w;
+var w =$('#rwidth2');
+w.attr({min:0,max:100}).val(width);
+w.on('input change',function(){
+    width=parseInt($(this).val().toString());
+    rect.w= width;
+    draw();
+});
+
+var width = rect.w;
+var w =$('#rwidth3');
+w.attr({min:0,max:100}).val(width);
+w.on('input change',function(){
+    width=parseInt($(this).val().toString());
+    rect.w= width;
+    draw();
+});
+
+var width = rect.w;
+var w =$('#rwidth4');
+w.attr({min:0,max:100}).val(width);
+w.on('input change',function(){
+    width=parseInt($(this).val().toString());
+    rect.w= width;
+    draw();
+});
+rectWidth=rect.w;
+
+function makeRoom(x, y, w, h,backgroundColor) {
+   
+   var g = new Kinetic.Group({
+       x: x,
+       y: y,
+       draggable: true
+   });
+  layer.add(g);
+
+   var c =  document.getElementById("complexCanvas");
+   var ctx = c.getContext("2d");
+   c.style.left = "466px";
+   c.style.top = "70px";
+   c.style.position = "absolute";
+   ctx.fillStyle=rectColor;
+   ctx.fillRect(0,0,c.width,c.height);
+   ctx.font = "12px Arial";
+   ctx.fillStyle = "black";
+   ctx.fillText("100".toString(),3, 20);
+ 
+   ctx.fillStyle=backgroundColor;
+
+  room = new Kinetic.Shape({
+       x: 0,
+       y: 0,
+       width: w,
+       height: h,
+       stroke:rectColor,
+       fill: rectColor,
+       drawFunc: function (context) {
+           ctx.clearRect(0,0,c.width,c.height);
+
+           ctx.fillStyle=rectColor;
+           ctx.fillRect(0,0,c.width,c.height);
+
+           
+           ctx.fillStyle=backgroundColor;
+           var path=new Path2D();
+           path.moveTo(this.anchorTR.x(),0);
+           path.lineTo(this.anchorTR.x(),this.anchorTR.y());
+           path.lineTo(this.anchorBR.x(),this.anchorBR.y());
+           path.lineTo(this.anchorBR.x(),rectLength_intitial);
+           path.lineTo(rectWidth_intitial,rectLength_intitial);
+           path.lineTo( rectWidth_intitial,0);
+   
+           ctx.strokeStyle =backgroundColor;
+           ctx.stroke();
+           ctx.fill(path);
+
+          ctx.font = "12px Arial";
+          ctx.fillStyle = "black";
+          if (this.anchorTR.y()>42)
+          {
+             topy = this.anchorTR.y() -18;
+          }else{
+           topy=24;
+          }
+          if (this.anchorBR.y()<176)
+          {
+              bottomy = this.anchorBR.y() + 18;
+          }
+          else{
+          bottomy=194
+          }
+
+       centery =( (this.anchorBR.y()-this.anchorTR.y()) /2)+this.anchorTR.y();
+  
+       if (centery<40)
+       {
+          topy= topy-5;
+          centery=40;
+       }
+       if (bottomy<60)
+       {
+          bottomy=60;
+       }
+       
+         if (inputLengthComplex>maxLength)
+         {
+           ctx.fillText(Math.round(Math.round(this.anchorTR.y()/2)*ratioMax).toString(),3,topy);
+           ctx.fillText(Math.round(((Math.round(this.anchorBR.y()/2)-Math.round(this.anchorTR.y()/2)))*ratioMax).toString(),3, centery);
+           ctx.fillText(Math.round((c.height/2-Math.round(this.anchorBR.y()/2))*ratioMax).toString(),3, bottomy);          
+         }
+         else{
+           ctx.fillText(Math.round(Math.round(this.anchorTR.y()/2)*ratio).toString(),3,topy);
+           ctx.fillText(Math.round(((Math.round(this.anchorBR.y()/2)-Math.round(this.anchorTR.y()/2)))*ratio).toString(),3,centery);
+           ctx.fillText(Math.round((c.height/2-Math.round(this.anchorBR.y()/2))*ratio).toString(),3, bottomy);          
+         }
+           var selff =this;
+           $(document).ready(function()
+           {
+               var w =$('#rwidthCom');
+               w.attr({min:0,max:100}).val( selff.anchorTR.x());
+           
+               var w =$('#rwidth2Com');
+               w.attr({min:0,max:100}).val( selff.anchorTR.x());
+          
+               var w =$('#rwidth3Com');
+               w.attr({min:0,max:100}).val( selff.anchorBR.x());
+   
+               var w =$('#rwidth4Com');
+               w.attr({min:0,max:100}).val( selff.anchorBR.x());
+           })
+           anchor1y= this.anchorTR.y();
+           anchor2y= this.anchorBR.y();
+           anchor1x= this.anchorTR.x();
+           anchor2x= this.anchorBR.x();
+           
+           context.closePath();
+           context.fillStrokeShape(this);
+       }
+   });
+   g.add(room);
+   
+   $(document).ready(function()
+   {
+       var w =$('#rwidthCom');
+       w.attr({min:0,max:rectWidth_intitial}).val(room.anchorTR.x());
+       w.on('input change',function(){
+           room.anchorTR.remove();
+           var width=parseInt($(this).val().toString());
+          room.anchorTR = makeAnchor(width, room.anchorTR.y(), g,"blue","1");
+          layer.draw();
+       });
+       var w =$('#rwidth2Com');
+       w.attr({min:0,max:rectWidth_intitial}).val(room.anchorTR.x());
+       w.on('input change',function(){
+           room.anchorTR.remove();
+           var width=parseInt($(this).val().toString());
+           room.anchorTR = makeAnchor(width, room.anchorTR.y(), g,"blue","1");
+           layer.draw();
+       });
+  
+       var w =$('#rwidth3Com');
+       w.attr({min:0,max:rectWidth_intitial}).val(room.anchorBR.x());
+       w.on('input change',function(){
+           room.anchorBR.remove();
+           var width=parseInt($(this).val().toString());
+           room.anchorBR = makeAnchor(width,room.anchorBR.y(), g,"red","2");
+           layer.draw();
+       });
+       var w =$('#rwidth4Com');
+       w.attr({min:0,max:rectWidth_intitial}).val(room.anchorBR.x());
+       w.on('input change',function(){
+           room.anchorBR.remove();
+           var width=parseInt($(this).val().toString());
+           room.anchorBR = makeAnchor(width, room.anchorBR.y(), g,"red","2");
+           layer.draw();
+       });
+       
+       
+   })
+   room.anchorTR = makeAnchor(c.width, 0, g,"blue","1");
+   room.anchorBR = makeAnchor(c.width, c.height, g,"red","2");
+   room.self2=this;
+   layer.draw();
+
+}
+function makeAnchor(x, y, group,color,name) {
+   var selfff=this;
+   var anchor = new Kinetic.Circle({
+       x: x,
+       y: y,
+       radius: 6,
+       fill: color,
+       stroke: 'black',
+       strokeWidth: 1,
+       draggable: true,
+       dragBoundFunc: function(pos) {
+           var X = pos.x;
+           var Y = pos.y;
+           if (name =="1")
+           {
+           if (Y > anchor2y) {
+             Y = anchor2y-8;
+           }
+           if (Y<0)
+             {
+                 Y=0;
+             }
+         }
+         else if (name=="2")
+         {
+           if (Y < anchor1y) {
+               Y = anchor1y+8;
+             }
+             if (Y>200)
+             {
+                 Y=200;
+             }
+         }
+         return ({
+           x: X,
+           y: Y
+         });
+       }
+   });
+   group.add(anchor);
+   anchor.moveToTop();
+   return (anchor);
+}
+
+
+
+
+    
+
+ 
+////#endregion
+
+function radioChangeHandler (event) {
+   
+   var selectedCase = event.value;
+   if (selectedCase =="Simple")
+   {
+       let div3 = document.getElementById('lengthComplex')
+       div3.style.display = "none";
+       let divv1 = document.getElementById('sliderComplex')
+       divv1.style.display = "none";
+       
+       let div4 = document.getElementById('lengthSimple')
+       div4.style.display = "block";
+       let divv2 = document.getElementById('sliderSimple')
+       divv2.style.display = "block";
+   }
+   else
+   {
+       let divv2 = document.getElementById('sliderSimple')
+       divv2.style.display = "none";
+       
+       let div4 = document.getElementById('lengthSimple')
+       div4.style.display = "none";
+
+       var stage = new Kinetic.Stage({
+           container: 'roomAnchors',
+           width: rectWidth_intitial+2,
+           height: rectLength_intitial 
+       });
+       layer = new Kinetic.Layer();
+       stage.add(layer);
+       var room1 = makeRoom(0, 0, 180, 180,backgroundColor);
+
+
+
+       let div3 = document.getElementById('lengthComplex')
+       div3.style.display = "block";
+
+       let divv1 = document.getElementById('sliderComplex')
+       divv1.style.display = "block";
+   }
+}
+
+function EnableCanvas(values){
+   if (values.checked == true)
+   {
+    $(".allDiv").fadeTo(300, 1);
+    document.getElementById("insertOrder").disabled = false;
+    document.getElementById("rwidth").disabled = false;
+    document.getElementById("rwidth2").disabled = false;
+    document.getElementById("rwidth3").disabled = false;
+    document.getElementById("rwidthCom").disabled = false;
+    document.getElementById("rwidth2Com").disabled = false;
+    document.getElementById("rwidth3Com").disabled = false;
+    document.getElementById("rwidth4Com").disabled = false;
+    document.getElementById("radio1").disabled = false;
+    document.getElementById("radio2").disabled = false;
+    document.getElementById("lengthSimple").disabled = false;
+    document.getElementById("lengthComplex").disabled = false;
+   }
+   else
+   {
+    $(".allDiv").fadeTo(300, 0.2);
+    document.getElementById("insertOrder").disabled = true;
+    document.getElementById("rwidth").disabled = true;
+    document.getElementById("rwidth2").disabled = true;
+    document.getElementById("rwidth3").disabled = true;
+    document.getElementById("rwidthCom").disabled = true;
+    document.getElementById("rwidth2Com").disabled = true;
+    document.getElementById("rwidth3Com").disabled = true;
+    document.getElementById("rwidth4Com").disabled = true;
+    document.getElementById("radio1").disabled = true;
+    document.getElementById("radio2").disabled = true;
+    document.getElementById("lengthSimple").disabled = true;
+    document.getElementById("lengthComplex").disabled = true;
+   }
+}
+
+function widthVerify(event) {
+   const inputValue = event.value;
+   if (inputValue>maxWidth)
+   {
+       alert("width must be less than 100")
+   }
+}
+function widthVerifyComplex(event)
+{
+   const inputValue = event.value;
+   if (inputValue>maxWidth)
+   {
+       alert("width must be less than 100")
+   }
+}
+
+function lengthChange(event) {
+       const inputValue = event.value;
+       inputLength=parseInt( inputValue);
+       if (inputValue> maxLength)
+       {
+           alert("Length must be less than "+maxLength )
+       }
+       var canvas =  document.getElementById('simpleCanvas'),
+       ctx = canvas.getContext('2d');
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+       ctx.fillStyle = rectColor;
+       ctx.fillRect(rect.x, rect.y,rect.w, rect.h);
+       ctx.font = "15px Arial";
+       ctx.fillStyle = "black";
+       if (inputLength>maxLength)
+       {
+       ctx.fillText(maxLength.toString(),130, 90);
+       }
+       else{
+           ctx.fillText(inputLength.toString(),130, 90);
+       }
+}
+
+function lengthChangeComplex(event) {
+  const inputValue = event.value;
+  inputLengthComplex=parseInt( inputValue);
+   if (inputValue> maxLength)
+   {
+       alert("Length must be less than "+maxLength )
+   }
+
+   var c =  document.getElementById("complexCanvas");
+   var ctx = c.getContext("2d");
+         
+    ratio =inputLengthComplex /  (rectLength_intitial/2);
+    ratioMax= maxLength/(rectLength_intitial/2);
+  
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.fillStyle=rectColor;
+    ctx.fillRect(0,0,c.width,c.height);
+
+    ctx.fillStyle=backgroundColor;
+    var path=new Path2D();
+    path.moveTo(room.anchorTR.x(),0);
+    path.lineTo(room.anchorTR.x(),room.anchorTR.y());
+    path.lineTo(room.anchorBR.x(),room.anchorBR.y());
+    path.lineTo(room.anchorBR.x(),rectLength_intitial);
+    path.lineTo(rectWidth_intitial,rectLength_intitial);
+    path.lineTo( rectWidth_intitial,0);
+
+    ctx.strokeStyle =backgroundColor;
+    ctx.stroke();
+    ctx.fill(path);
+
+    ctx.fillStyle = rectColor;
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "black";
+
+  
+   if (inputLengthComplex>maxLength)
+   {
+       ctx.fillText(Math.round(Math.round(room.anchorTR.y()/2)*ratioMax).toString(),3, topy);
+       ctx.fillText(Math.round(((Math.round(room.anchorBR.y()/2)-Math.round(room.anchorTR.y()/2)))*ratioMax).toString(),3, centery);
+       ctx.fillText(Math.round((c.height/2-Math.round(room.anchorBR.y()/2))*ratioMax).toString(),3, bottomy);           
+   }
+   else{
+       ctx.fillText(Math.round(Math.round(room.anchorTR.y()/2)*ratio).toString(),3, topy);
+       ctx.fillText(Math.round(((Math.round(room.anchorBR.y()/2)-Math.round(room.anchorTR.y()/2)))*ratio).toString(),3, centery);
+       ctx.fillText(Math.round((c.height/2-Math.round(room.anchorBR.y()/2))*ratio).toString(),3, bottomy);          
+   }
+}
+
+</script>
+
+</body>
+</html>
