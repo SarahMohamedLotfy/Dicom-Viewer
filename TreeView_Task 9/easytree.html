@@ -1,19 +1,20 @@
 <!DOCTYPE html>
+<html>
 
-<html >
-<head>    
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="EasyTree free jquery tree menu js javascript" />
     <meta name="description" content="EasyTree, free jquery tree menu" />
-   <link href="http://www.easyjstree.com/content/skin-win8/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
+    <link href="http://www.easyjstree.com/content/skin-win8/ui.easytree.css" rel="stylesheet" class="skins"
+        type="text/css" />
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://www.easyjstree.com/bundles/jquery?v=5r0dFjH__tJcUIAQyQUG4tMptq0H5PoqgaCRzuzpfIs1"></script>
     <script src="http://www.easyjstree.com/Scripts/jquery.easytree.min.js"></script>
 </head>
 
-<body >
-   
+<body>
+
     <div class="row2">
         <div class="column2" style="background-color:#F8F8F8;">
             <div class="scrollHorizontal">
@@ -26,529 +27,628 @@
             <p>Total contraleteral length: 70</p>
         </div>
         <div class="column3" style="background-color:white;">
-            <div id = "leftbox"> 
+            <div id="leftbox">
                 <form>
                     <label for="quantity">Insertion side </label>
                     <label class="radio-inline">
-                      <input type="radio" name="optradio" checked>Left
+                        <input type="radio" name="optradio" checked>Left
                     </label>
                     <label class="radio-inline">
-                      <input type="radio" name="optradio">Right
+                        <input type="radio" name="optradio">Right
                     </label>
-                  </form>
-            </div> 
-              
-            <div id = "middlebox"> 
-                <form >
+                </form>
+            </div>
+
+            <div id="middlebox">
+                <form>
                     <label for="quantity">Start slice: </label>
                     <input type="number" id="quantity" name="quantity" min="1" max="100">
-                  </form>
-            </div> 
-             
-            <p style="color:blue;font-family:verdana; font-weight: bold;   font-size: 15px;">Trunk-lpsiteral Leg Endopropesthesis  (mm &#215; mm &#215; cm)</p>
-            <p style="font-family:verdana; font-weight: bold;  font-size: 15px;">Recommended prosthesis oversizing relative to the aorta artery is approximately 10-21 %</p>
-            
-            <form  id="radioForm" onclick="clickRadioButton()" >
+                </form>
+            </div>
+
+            <p style="color:blue;font-family:verdana; font-weight: bold;   font-size: 15px;">Trunk-lpsiteral Leg
+                Endopropesthesis (mm &#215; mm &#215; cm)</p>
+            <p style="font-family:verdana; font-weight: bold;  font-size: 15px;">Recommended prosthesis oversizing
+                relative to the aorta artery is approximately 10-21 %</p>
+
+            <form id="radioForm" >
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" value ="23" >23&#215;12&#215;12.0
+                    <input type="radio" onclick="clickRadioButton()" name="optradio" value="23">23&#215;12&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:150px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" value ="23" name="optradio">23&#215;12&#215;14.0
+                    <input type="radio" onclick="clickRadioButton()" value="23" name="optradio">23&#215;12&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="23" name="optradio">23&#215;12&#215;16.0
-                  </label>
+                    <input type="radio" onclick="clickRadioButton()"value="23" name="optradio">23&#215;12&#215;16.0
+                </label>
 
 
-                  <label class="radio-inline" style="margin-right:240px; margin-left:148px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="23" name="optradio">23&#215;12&#215;18.0
-                  </label>
-              
+                <label class="radio-inline"
+                    style="margin-right:240px; margin-left:148px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" onclick="clickRadioButton()" value="23" name="optradio">23&#215;12&#215;18.0
+                </label>
+
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" value ="23" name="optradio" >23&#215;14.5&#215;12.0
+                    <input type="radio" onclick="clickRadioButton()" value="23" name="optradio">23&#215;14.5&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" value ="23" name="optradio">23&#215;14.5&#215;14.0
+                    <input type="radio"onclick="clickRadioButton()" value="23" name="optradio">23&#215;14.5&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="23" name="optradio">23&#215;14.5&#215;16.0
-                  </label>
+                    <input type="radio" onclick="clickRadioButton()"value="23" name="optradio">23&#215;14.5&#215;16.0
+                </label>
 
-                  <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="23" name="optradio">23&#215;14.5&#215;18.0
-                  </label>
-            <hr>
+                <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio"onclick="clickRadioButton()" value="23" name="optradio">23&#215;14.5&#215;18.0
+                </label>
+                <hr>
 
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" value ="26" name="optradio" >26&#215;12&#215;12.0
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;12&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:150px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" value ="26"name="optradio">26&#215;12&#215;14.0
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;12&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio"value ="26" name="optradio">26&#215;12&#215;16.0
-                  </label>
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;12&#215;16.0
+                </label>
 
-                  <label class="radio-inline" style="margin-left:148px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio"value ="26" name="optradio">26&#215;12&#215;18.0
-                  </label>
+                <label class="radio-inline"
+                    style="margin-left:148px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;12&#215;18.0
+                </label>
 
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" value ="26"name="optradio" >26&#215;14.5&#215;12.0
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;14.5&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" value ="26"name="optradio">26&#215;14.5&#215;14.0
+                    <input type="radio" onclick="clickRadioButton()"value="26" name="optradio">26&#215;14.5&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio"value ="26" name="optradio">26&#215;14.5&#215;16.0
-                  </label>
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;14.5&#215;16.0
+                </label>
 
-                  <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="26"name="optradio">26&#215;14.5&#215;18.0
-                  </label>
+                <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio"onclick="clickRadioButton()" value="26" name="optradio">26&#215;14.5&#215;18.0
+                </label>
 
-                  <hr>
+                <hr>
 
 
-                  <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" value ="28.5"name="optradio" >28.5&#215;12&#215;12.0
+                <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;12&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:140px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" value ="28.5" name="optradio">28.5&#215;12&#215;14.0
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;12&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="28.5" name="optradio">28.5&#215;12&#215;16.0
-                  </label>
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;12&#215;16.0
+                </label>
 
-                  <label class="radio-inline" style="margin-left:138px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="28.5" name="optradio">28.5&#215;12&#215;18.0
-                  </label>
+                <label class="radio-inline"
+                    style="margin-left:138px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;12&#215;18.0
+                </label>
 
 
-                  <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio"  value ="28.5" name="optradio" >28.5&#215;14.5&#215;12.0
+                <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;14.5&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:128px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio"  value ="28.5" name="optradio">28.5&#215;14.5&#215;14.0
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;14.5&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio"  value ="28.5" name="optradio">28.5&#215;14.5&#215;16.0
-                  </label>
-
-                  <label class="radio-inline" style="margin:128px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio"  value ="28.5"name="optradio">28.5&#215;14.5&#215;18.0
-                  </label>
-
-                  <hr>
-
-                <label class="radio-inline" style="margin-left:250px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio"  value ="31"name="optradio">31&#215;14.5&#215;13.0
+                    <input type="radio"onclick="clickRadioButton()" value="28.5" name="optradio">28.5&#215;14.5&#215;16.0
                 </label>
 
-                <label class="radio-inline" style="  margin-left:148px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="31" name="optradio">31&#215;14.5&#215;17.0
+                <label class="radio-inline" style="margin:128px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" onclick="clickRadioButton()"value="28.5" name="optradio">28.5&#215;14.5&#215;18.0
+                </label>
+
+                <hr>
+
+                <label class="radio-inline" style="margin-left:250px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" onclick="clickRadioButton()"value="31" name="optradio">31&#215;14.5&#215;13.0
+                </label>
+
+                <label class="radio-inline"
+                    style="  margin-left:148px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" onclick="clickRadioButton()"value="31" name="optradio">31&#215;14.5&#215;17.0
                 </label>
 
                 <label class="radio-inline" style="margin-left:250px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" value ="31" name="optradio">31&#215;14.5&#215;15.0
-                  </label>
-              </form>
-     <div id="allContainer">       
-            <p style="color:blue;font-family:verdana; font-weight: bold;   font-size: 15px;">Contralateral Leg Endoprosthesis (mm &#215; cm)</p>
-            <p style="font-family:verdana; font-weight: bold;  font-size: 15px;">Recommended prosthesis oversizing relative to the iliac artery is approximately 7-25 %</p>
-        
-            <div class="container">
-                <div class="left">
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                            <img src="Ruler.PNG" alt="img"/>
+                    <input type="radio" onclick="clickRadioButton()"value="31" name="optradio">31&#215;14.5&#215;15.0
+                </label>
+            </form>
+            <div id="allContainer">
+                <p style="color:blue;font-family:verdana; font-weight: bold;   font-size: 15px;">Contralateral Leg
+                    Endoprosthesis (mm &#215; cm)</p>
+                <p style="font-family:verdana; font-weight: bold;  font-size: 15px;">Recommended prosthesis oversizing
+                    relative to the iliac artery is approximately 7-25 %</p>
+
+                <div class="container disabled" id="containerid">
+                    <div class="left">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>12 &#215; 10.0</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>12 &#215; 10.0</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>14.5 &#215; 10.0</div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                            <img src="Ruler.PNG" alt="img"/>
+
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>16 &#215; 9.5</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>14.5 &#215; 10.0</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>18 &#215; 9.5</div>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>16 &#215; 9.5</div>
-                        </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>18 &#215; 9.5</div>
-                        </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top; margin-left: 2px;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>20 &#215; 9.5</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="center">
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>12 &#215; 12.0</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top; margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>20 &#215; 9.5</div>
+                            </div>
                         </div>
                     </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
+                    <div class="center">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>12 &#215; 12.0</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>14.5 &#215; 12.0</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>14.5 &#215; 12.0</div>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
+
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>16 &#215; 11.5</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>16 &#215; 11.5</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>18 &#215; 11.5</div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>18 &#215; 11.5</div>
-                        </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>20 &#215; 11.5</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>12 &#215; 14.0</div>
-                        </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>14.5 &#215; 14.0</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>20 &#215; 11.5</div>
+                            </div>
                         </div>
                     </div>
-        
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
+                    <div class="right">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>12 &#215; 14.0</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>16 &#215; 13.5</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>14.5 &#215; 14.0</div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
+
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>16 &#215; 13.5</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>18 &#215; 13.5</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>18 &#215; 13.5</div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>20 &#215; 13.5</div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        
-            <p style="color:blue;font-family:verdana; font-weight: bold;font-size: 15px; position: absolute; margin-top: 310px;">lliac Extender Endorposthesis (mm &#215; cm)</p>
-        
-            <div class="container2">
-                <div class="left2">
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>10 &#215; 7.0</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="center2">
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
-                        </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>12 &#215; 7.0</div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>20 &#215; 13.5</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="right2">
-                    <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                        <div style="display:inline-block;vertical-align:top;">
-                            <img src="Ruler.PNG" alt="img"/>
+
+                <p
+                    style="color:blue;font-family:verdana; font-weight: bold;font-size: 15px; position: absolute; margin-top: 310px;">
+                    lliac Extender Endorposthesis (mm &#215; cm)</p>
+
+                <div class="container2 disabled" id="container2id">
+                    <div class="left2">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>10 &#215; 7.0</div>
+                            </div>
                         </div>
-                        <div style="display:inline-block; margin-top: 10px;">
-                            <div>14.5 &#215; 7.0</div>
+                    </div>
+                    <div class="center2">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>12 &#215; 7.0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right2">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>14.5 &#215; 7.0</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-            <div class ="tree">
-            <div id="demo_menu" class="scroll" onclick="overlapValue()" >
-                <ul id="ul">
-                    <li class="isFolder isExpanded" title="Bookmarks">
-                        Extensions
-                        <ul >
-                            <li class="isFolder isExpanded" >Aortic Neck Extensions</li>
-                            <li class="isFolder isExpanded">lpsilateral Extensions</li>
-                            <li class="isFolder isExpanded">Contralateral Extensions</li>
+                <div class="tree">
+                    <div id="demo_menu" class="scroll" onclick="overlapValue()">
+                        <ul id="ul">
+                            <li class="isFolder isExpanded" title="Bookmarks">
+                                Extensions
+                                <ul>
+                                    <li class="isFolder isExpanded">Aortic Neck Extensions</li>
+                                    <li class="isFolder isExpanded">lpsilateral Extensions</li>
+                                    <li class="isFolder isExpanded">Contralateral Extensions</li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <p style="color:blue;font-family:verdana; font-weight: bold;font-size: 15px; position: absolute; margin-top: 600px;">Aortic Extender Endoprosthesis (mm &#215; cm)</p>
-        
-        <div class="container3">
-            <div class="left3">
-                <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                    <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                        <img src="Ruler.PNG" alt="img"/>
-                    </div>
-                    <div style="display:inline-block; margin-top: 10px;">
-                        <div>23 &#215; 3.3</div>
                     </div>
                 </div>
-                <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                    <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
-                        <img src="Ruler.PNG" alt="img"/>
-                    </div>
-                    <div style="display:inline-block; margin-top: 10px;">
-                        <div>26 &#215; 3.3</div>
-                    </div>
-                </div>
-            </div>
-            <div class="center3">
-                <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                    <div style="display:inline-block;vertical-align:top;">
-                        <img src="Ruler.PNG" alt="img"/>
-                    </div>
-                    <div style="display:inline-block; margin-top: 10px;">
-                        <div>28.5 &#215; 3.3</div>
-                    </div>
-                </div>
-            </div>
-            <div class="right3">
-                <div id="divDrag2" class="easytree-draggable" style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
-                    <div style="display:inline-block;vertical-align:top;">
-                        <img src="Ruler.PNG" alt="img"/>
-                    </div>
-                    <div style="display:inline-block; margin-top: 10px;">
-                        <div>32 &#215; 4.5</div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="lastDiv">
-                
-                <div class="navbar">
-                    <a style="font-family:verdana; font-weight: bold; font-size: 15px;">Device Orientation: </a>
 
-                    <div class="dropdown">
-                    <button class="dropbtn" onclick="dropDown()">Standard position - contralateral gate contralateral
-                      <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content" id="myDropdown">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
+                <p
+                    style="color:blue;font-family:verdana; font-weight: bold;font-size: 15px; position: absolute; margin-top: 600px;">
+                    Aortic Extender Endoprosthesis (mm &#215; cm)</p>
+
+                <div class="container3 disabled " id="container3id">
+                    <div class="left3">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div id="n1">23 &#215; 3.3</div>
+                            </div>
+                        </div>
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2px;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>26 &#215; 3.3</div>
+                            </div>
+                        </div>
                     </div>
-                    </div> 
-                  </div>
-                  
-  
-              
-                  <button style="margin-left: 600px; margin-top: 50px;">Cancel</button>
-                  <button  >Build</button>
-                
-                  
-                              </div>
-            <div class ="overlap">
+                    <div class="center3">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>28.5 &#215; 3.3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right3">
+                        <div id="divDrag2" class="easytree-draggable"
+                            style=" width: 140px; height: 50px; border: 1px dotted white; margin: 3px; ">
+                            <div style="display:inline-block;vertical-align:top;">
+                                <img src="Ruler.PNG" alt="img" />
+                            </div>
+                            <div style="display:inline-block; margin-top: 10px;">
+                                <div>32 &#215; 4.5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlap">
                 <p>Overlap (mm)</p>
-            <form > 
-                <input type="number" id="overlap"  oninput="overlapChnage()" name="quantity" min="1" max="100">
-                <input type="button" onclick="incrementValue()" value="+" />
-                <input type="button" onclick="decrementValue()" value="-" />
-              </form>
-             </div>
-            <button id ="deleteButton" class="deleteButton" onclick="deleteNodes(); return false;">Delete</button>
+                <form>
+                    <input type="number" id="overlap" oninput="overlapChnage()" name="quantity" min="1" max="100">
+                    <input type="button" onclick="incrementValue()" value="+" />
+                    <input type="button" onclick="decrementValue()" value="-" />
+                </form>
+            </div>
+            <button id="deleteButton" class="deleteButton" onclick="deleteNodes(); return false;">Delete</button>
         </div>
+    </div>
+    </div>
+
+    <div class="lastDiv">
+        <div class="navbar">
+            <a style="font-family:verdana; font-weight: bold; font-size: 15px;">Device Orientation: </a>
+
+            <div class="dropdown">
+                <button class="dropbtn" onclick="dropDown()">Standard position - contralateral gate contralateral<i
+                        class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+        <button style="margin-left: 600px; ">Cancel</button>
+        <button>Build</button>
+    </div>
+
+    <dialog id="favDialog">
+        <form method="dialog">
+            <p><label>Favorite animal:</p>
+          <menu>
+            <button value="cancel">Cancel</button>
+            <button id="confirmBtn" value="default">Ok</button>
+          </menu>
+        </form>
+      </dialog>
+
+      <dialog id="favDialog2">
+        <form method="dialog">
+            <p><label>No devices may be inserted after an Aortic Extender</p>
+          <menu>
+            <button id="confirmBtn" value="default">Ok</button>
+          </menu>
+        </form>
+      </dialog>
+
+      
+      <dialog id="favDialog3">
+        <form method="dialog">
+            <p>Cannot add lliac Legs or lliac Extensions in Aortic Neck</p>
+          <menu>
+            <button id="confirmBtn" value="default">Ok</button>
+          </menu>
+        </form>
+      </dialog>
+
+
+
+      
+<div class="overlay" id="dialog-container">
+    <div class="popup">
+      <p>This will be saved. Continue ?</p>
+      <div class="text-right">
+        <button class="dialog-btn btn-cancel" id="cancel">Cancel</button>
+        <button class="dialog-btn btn-primary" id="confirm">Ok</button>
       </div>
     </div>
-   
-
+  </div>
+      
     <script>
 
-    document.getElementById("allContainer").disabled = true;
-    document.getElementById("overlap").disabled = true;
-    document.getElementById("deleteButton").disabled = true;
+        document.getElementById("allContainer").disabled = true;
+        document.getElementById("overlap").disabled = true;
+        document.getElementById("deleteButton").disabled = true;
+        $(".container").fadeTo(300, 0.2);
+        $(".container2").fadeTo(300, 0.2);
+        $(".container3").fadeTo(300, 0.2);
+        var contraEnter =true;
 
-    function canDrop(event, nodes, isSourceNode, source, isTargetNode, target) {
-        if (target.text =="Extensions")
-        {
-            return false;
-        }
-        else{
-            if (!isTargetNode && target.id == 'divAcceptHref' && isSourceNode){
-                return source.href ? true : false;
+      
+var overlayme = document.getElementById("dialog-container");
+function show_dialog() {
+    overlayme.style.display = "block";
+}
+
+
+        function canDrop(event, nodes, isSourceNode, source, isTargetNode, target) {
+            if (target.text == "Extensions") {
+                return false;
             }
-            if ((isTargetNode && target.text == 'Contralateral Extensions') ||(isTargetNode && target.text == 'Aortic Neck Extensions')||(isTargetNode && target.text == 'lpsilateral Extensions') ) {
-                var part = (source.innerText).substring(1, 4);
-                var partint = parseInt(part) ;
-
-                var part2 = (source.innerText).substring(source.innerText.length-4 );
-                var partint2 = parseInt(part2) ;
-                if (target.text =="Aortic Neck Extensions" && partint>20)
-                {
+            else {
+                if (!isTargetNode && target.id == 'divAcceptHref' && isSourceNode) {
+                    return source.href ? true : false;
+                }
+                if (isTargetNode && (target.text == 'Contralateral Extensions' || target.text == "lpsilateral Extensions" || target.text == "Aortic Neck Extensions")) {
                     return true;
                 }
-                else if ((target.text =="lpsilateral Extensions" && partint<21)|| (target.text =="lpsilateral Extensions" && partint2==7)   )
-                {
-                    return true;
-                }
-                else if ((target.text =="Contralateral Extensions" && partint2==7 )||(target.text =="Contralateral Extensions" && partint<21))
-                {
-                    return true;
-                }
-                else
-                {
+                else {
                     return false;
                 }
             }
         }
-    }
-    function dropping(event, nodes, isSourceNode, source, isTargetNode, target, canDrop) {
-        if (isSourceNode && !canDrop && target && (!isTargetNode && (target.id == 'divRejectAll' || target.id == 'divAcceptHref'))) {
-            alertMessage("Dropping node rejected '" + source.text + "'");
+        function dropping(event, nodes, isSourceNode, source, isTargetNode, target, canDrop) {
+            if (isSourceNode && !canDrop && target && (!isTargetNode && (target.id == 'divRejectAll' || target.id == 'divAcceptHref'))) {
+                alertMessage("Dropping node rejected '" + source.text + "'");
+            }
         }
-    }
-    function dropped(event, nodes, isSourceNode, source, isTargetNode, target) {
-        var str2= source.innerText;
+        function dropped(event, nodes, isSourceNode, source, isTargetNode, target) {
+            var str2 = source.innerText;
+            var part = (str2).substring(1, 4);
+            var partint = parseInt(part);
 
-        var part = (str2).substring(1, 4);
-        var partint = parseInt(part) ;
-        if (isTargetNode && !isSourceNode) { 
-            if(partint <= radioValue)
-            {
-            var targetText= target.text;
-            var node = {};
-            var str1="";
-            if (targetText=="Aortic Neck Extensions")
-            {
-                str1 = "GORE ECLUDER Device (OUS): Aortic Extender:  ";
-                var nodes = easyTree.getAllNodes();
-                if (nodes[0].children[0].children.length >0)
-                {
-                    easyTree.removeNode(nodes[0].children[0].children[0].id);
+            var part2 = (source.innerText).substring(source.innerText.length - 4);
+            var partint2 = parseInt(part2);
+
+            if (isTargetNode && !isSourceNode) {
+                if (partint <= radioValue) {
+                    var targetText = target.text;
+                    var node = {};
+                    var str1 = "";
+                    if ( partint > 20)
+                    {
+                        if (targetText == "Aortic Neck Extensions" ) {
+                            str1 = "GORE ECLUDER Device (OUS): Aortic Extender:  ";
+                            var nodes = easyTree.getAllNodes();
+                            if (nodes[0].children[0].children.length > 0) {
+                                easyTree.removeNode(nodes[0].children[0].children[0].id);
+                            }
+                            var res = str1.concat(str2);
+                            node.text = res;
+                            easyTree.addNode(node, target.id);
+                        }
+                        else
+                        {
+                            if (contraEnter == true)
+                            {
+                                var answer = window.confirm("You are trying to place an Aortic Extender into an iliac. This treatment option is not within the approved indications for use of the Gore EXCLUDER (R) Bifurcated Endoprothesis. Please refer to the EXCLUDER Instructions for Use for more information. \n \n  If you are sure thatyou would like to proceed, click OK");
+                                if (answer) {
+                                    str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
+                                    var res = str1.concat(str2);
+                                    node.text = res;
+                                    easyTree.addNode(node, target.id);
+                                    contraEnter =false;
+                                }
+                            }                              
+                        }
+                    }
+                    else if (partint < 21 ||partint2 == 7)
+                    {
+                        if (target.text == "Contralateral Extensions")
+                        {
+                            if (contraEnter==true)
+                            {
+                                str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
+                                var res = str1.concat(str2);
+                                node.text = res;
+                                easyTree.addNode(node, target.id);
+                            }
+                            else{
+                                favDialog2.showModal();
+                            }
+                        }
+                        else if (target.text == "lpsilateral Extensions" )
+                        {
+                            str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
+                            var res = str1.concat(str2);
+                            node.text = res;
+                            easyTree.addNode(node, target.id);
+                        }
+                     else{
+                        favDialog3.showModal();
+                        }
+                    }
+                    }
                 }
-            }
-            else if (targetText=="lpsilateral Extensions")
-            {
-                str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
-            }
-            var res = str1.concat(str2);
-            node.text = res;
-            easyTree.addNode(node, target.id);
-        }
-        else
-        {
-            if (radioValue==0)
-            {
-                alert("Please choose value from radio");
-            }
-            else
-            {
-            alert("Cannot add bigger than  " + radioValue);
-            }
-        }
-         }
-        }
+                else {
+                        alert("Cannot add bigger than  " + radioValue);
+                    }
+                }
         
+
         function deleteNodes() {
             var nodes = easyTree.getAllNodes();
             deleteNode(nodes);
             easyTree.rebuildTree(nodes);
         }
-        function deleteNode(nodes){
+        function deleteNode(nodes) {
             var i = 0;
-            var j=0;
+            var j = 0;
             for (i = 0; i < nodes[0].children.length; i++) {
                 for (j = 0; j < nodes[0].children[i].children.length; j++) {
-                    if (nodes[0].children[i].children[j].isActive)
-                    {
+                    if (nodes[0].children[i].children[j].isActive) {
+                        var part = (nodes[0].children[i].children[j].text).substring(40, 43);
+                        var partint = parseInt(part);
+                        if (partint > 21 && i==2 )
+                        {
+                            contraEnter=true;
+                        }
                         easyTree.removeNode(nodes[0].children[i].children[j].id);
                         console.log(nodes[0].children[i].children[j]);
                     }
                 }
             }
-            document.getElementById("overlap").value =  20 ;
+            document.getElementById("overlap").value = 20;
         }
         var overlapValuesDict = {};
         function overlapChnage() {
-
             var overlapValue = document.getElementById("overlap").value;
             var nodes = easyTree.getAllNodes();
             var i = 0;
-            var j=0;
+            var j = 0;
             var selectedId;
             for (i = 0; i < nodes[0].children.length; i++) {
                 for (j = 0; j < nodes[0].children[i].children.length; j++) {
-                    if (nodes[0].children[i].children[j].isActive)
-                    {
-                        selectedId=nodes[0].children[i].children[j].id;
+                    if (nodes[0].children[i].children[j].isActive) {
+                        selectedId = nodes[0].children[i].children[j].id;
                         console.log(selectedId);
                         overlapValuesDict[selectedId] = overlapValue;
                         console.log(overlapValuesDict);
@@ -556,302 +656,401 @@
                 }
             }
         }
-        function incrementValue()
-{
-    var value = parseInt(document.getElementById('overlap').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value++;
-    document.getElementById('overlap').value = value;
-}
-var radioValue =0;
-function clickRadioButton()
-{
-    document.getElementById("allContainer").disabled = false;
-    document.getElementById("overlap").disabled = false;
-    document.getElementById("deleteButton").disabled = false;
+        function incrementValue() {
+            var value = parseInt(document.getElementById('overlap').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById('overlap').value = value;
+        }
+        var radioValue = 0;
+        function clickRadioButton() {
+            document.getElementById("allContainer").disabled = false;
+            document.getElementById("overlap").disabled = false;
+            document.getElementById("deleteButton").disabled = false;
+            document.getElementById("divDrag2").disabled = false;
+            $("#container3id").removeClass('disabled');
+            $("#containerid").removeClass('disabled');
+            $("#container2id").removeClass('disabled');
 
-    console.log("fffff");
-    var form = document.getElementById("radioForm");
-    var val = form.elements["optradio"].value;
-    radioValue=parseInt(val);
-    console.log(parseInt(val));
-}
+            $(".container").fadeTo(300, 1);
+            $(".container2").fadeTo(300, 1);
+            $(".container3").fadeTo(300, 1);
 
-function decrementValue()
-{
-    var value = parseInt(document.getElementById('overlap').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value--;
-    document.getElementById('overlap').value = value;
-}
-        document.getElementById("overlap").value =  20 ;
+            var form = document.getElementById("radioForm");
+            var val = form.elements["optradio"].value;
+            radioValue = parseInt(val);
+        }
 
-        function overlapValue()
-        {
+        function decrementValue() {
+            var value = parseInt(document.getElementById('overlap').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value--;
+            document.getElementById('overlap').value = value;
+        }
+        document.getElementById("overlap").value = 20;
+
+        function overlapValue() {
             document.getElementById("overlap").disabled = false;
             document.getElementById("deleteButton").disabled = false;
 
             var nodes = easyTree.getAllNodes();
             var i = 0;
-            var j=0;
-            
+            var j = 0;
+
             for (i = 0; i < nodes[0].children.length; i++) {
                 for (j = 0; j < nodes[0].children[i].children.length; j++) {
-                    if (nodes[0].children[i].children[j].isActive)
-                    {
-                        if (overlapValuesDict[nodes[0].children[i].children[j].id] !=null)
-                        {
-                            document.getElementById("overlap").value =  overlapValuesDict[nodes[0].children[i].children[j].id] ;
+                    if (nodes[0].children[i].children[j].isActive) {
+                        if (overlapValuesDict[nodes[0].children[i].children[j].id] != null) {
+                            document.getElementById("overlap").value = overlapValuesDict[nodes[0].children[i].children[j].id];
                             console.log(nodes[0].children[i].children[j]);
                         }
-                        else{
-                            document.getElementById("overlap").value =  20 ;
+                        else {
+                            document.getElementById("overlap").value = 20;
                         }
                     }
                 }
-             }
-             for (i = 0; i < nodes[0].children.length; i++) {
-                    if (nodes[0].children[i].isActive)
-                    {
-                        document.getElementById("overlap").disabled = true;
-                        document.getElementById("deleteButton").disabled = true;
-                        console.log("cliccccc");
-                    }
-                }
-             
             }
-            function dropDown() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+            for (i = 0; i < nodes[0].children.length; i++) {
+                if (nodes[0].children[i].isActive) {
+                    document.getElementById("overlap").disabled = true;
+                    document.getElementById("deleteButton").disabled = true;
+                }
+            }
 
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
-    }
-  }
-}   
-            
-            var easyTree = $('#demo_menu').easytree({
-                enableDnd: true,
-                canDrop: canDrop,
-                dropped: dropped,
-                dropping: dropping
-            });
+        }
+        function dropDown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        window.onclick = function (e) {
+            if (!e.target.matches('.dropbtn')) {
+                var myDropdown = document.getElementById("myDropdown");
+                if (myDropdown.classList.contains('show')) {
+                    myDropdown.classList.remove('show');
+                }
+            }
+        }
+
+        var easyTree = $('#demo_menu').easytree({
+            enableDnd: true,
+            canDrop: canDrop,
+            dropped: dropped,
+            dropping: dropping
+        });
     </script>
     <style>
-       .left, .right, .center {
-      float: left;
-      width: 20%;
-      color: black;
-      padding: 10px;
-      height: 400px;
-      text-align: center;
-   }
-   .left {
-      background-color: white;
-   }
-   .right {
-      background-color: white;
-   }
-   .center {
-      background-color: white
-   }
-   .container:after {
-      clear: both;
-   }
-   .left2, .right2, .center2 {
-      float: left;
-      width: 20%;
-      padding-top: 5px;
-      color: black;
-      padding: 20px;
-      height: 400px;
-      text-align: center;
-   }
-   .left2 {
-      background-color: white;
-   }
-   .right2 {
-      background-color: white;
-   }
-   .center2 {
-      background-color: white
-   }
-   .container2 {
-      clear: both;
-      margin-top: 330px;
-      position: absolute;
-   }
-   .tree
-   {
-       position: absolute;
-       margin-top: 420px;
-   }
-   ul {
-font:18px "Arial",san-serif;
-}
-li {
-font:18px "Arial",san-serif;
-}
-.left3, .right3, .center3 {
-      float: left;
-      width: 20%;
-      padding-top: 5px;
-      color: black;
-      padding: 20px;
-      height: 400px;
-      text-align: center;
-   }
-   .left3 {
-      background-color: white;
-   }
-   .right3 {
-      background-color: white;
-   }
-   .center3 {
-      background-color: white
-   }
-   .container3 {
-      clear: both;
-      margin-top: 620px;
-      position: absolute;
-   }
-.deleteButton
-{
-    margin-top: 10px;
-    margin-right: 200px;
-    height:50px;
-    width:100px;
-    font-size: 17px;
-}
-.overlap
-{
-    margin-top: 370px;
-}
-div.scroll { 
-                margin:4px, 4px; 
-                padding:4px; 
-                background-color: white; 
-                width: 700px; 
-                height: 150px; 
-                overflow-x: hidden; 
-                overflow-y: auto; 
-                text-align:justify; 
-            }
+        .left,
+        .right,
+        .center {
+            float: left;
+            width: 20%;
+            color: black;
+            padding: 10px;
+            height: 400px;
+            text-align: center;
+        }
 
-         
-/* Create two equal columns that floats next to each other */
-.column2 {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  height: 900px; /* Should be removed. Only for demonstration */
-}
-.column3 {
-  float: left;
-  width: 75%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
+        .left {
+            background-color: white;
+        }
 
-/* Clear floats after the columns */
-.row2:after {
-  content: "";
-  display: table;
-  clear: both;
-} 
-div.scrollHorizontal { 
-                margin: 4px, 4px; 
-                padding: 4px; 
-                width: 300px; 
-                height: 800px;
-                overflow-x: auto; 
-                overflow-y: hidden; 
-                white-space: nowrap; 
-            } 
+        .right {
+            background-color: white;
+        }
 
-            #leftbox { 
-                float:left;  
-                width:25%; 
-                height:50px; 
-            } 
-            #middlebox{ 
-                float:left;  
-                width:70%; 
-                height:50px; 
-            } 
-            .lastDiv
-{
-    position:absolute;
-    padding-top: 800px;
-}
-.navbar {
-  overflow: hidden;
-  background-color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
+        .center {
+            background-color: white
+        }
 
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+        .container:after {
+            clear: both;
+        }
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
+        .left2,
+        .right2,
+        .center2 {
+            float: left;
+            width: 20%;
+            padding-top: 5px;
+            color: black;
+            padding: 20px;
+            height: 400px;
+            text-align: center;
+        }
 
-.dropdown .dropbtn {
-  cursor: pointer;
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: black;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
+        .left2 {
+            background-color: white;
+        }
+
+        .right2 {
+            background-color: white;
+        }
+
+        .center2 {
+            background-color: white
+        }
+
+        .container2 {
+            clear: both;
+            margin-top: 330px;
+            position: absolute;
+        }
+
+        .tree {
+            position: absolute;
+            margin-top: 420px;
+        }
+
+        ul {
+            font: 18px "Arial", san-serif;
+        }
+
+        li {
+            font: 18px "Arial", san-serif;
+        }
+
+        .left3,
+        .right3,
+        .center3 {
+            float: left;
+            width: 20%;
+            padding-top: 5px;
+            color: black;
+            padding: 20px;
+            height: 400px;
+            text-align: center;
+        }
+
+        .left3 {
+            background-color: white;
+        }
+
+        .right3 {
+            background-color: white;
+        }
+
+        .center3 {
+            background-color: white
+        }
+
+        .container3 {
+            clear: both;
+            margin-top: 620px;
+            position: absolute;
+        }
+
+        .disabled {
+            pointer-events: none;
+            cursor: none;
+        }
+
+        .deleteButton {
+            margin-top: 10px;
+            margin-right: 200px;
+            height: 50px;
+            width: 100px;
+            font-size: 17px;
+        }
+
+        .overlap {
+            margin-top: 370px;
+        }
+
+        div.scroll {
+            margin: 4px, 4px;
+            padding: 4px;
+            background-color: white;
+            width: 700px;
+            height: 150px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align: justify;
+        }
 
 
-.dropdown-content {
-  display: none;
+        /* Create two equal columns that floats next to each other */
+        .column2 {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            height: 900px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .column3 {
+            float: left;
+            width: 75%;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row2:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        div.scrollHorizontal {
+            margin: 4px, 4px;
+            padding: 4px;
+            width: 300px;
+            height: 800px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+
+        #leftbox {
+            float: left;
+            width: 25%;
+            height: 50px;
+        }
+
+        #middlebox {
+            float: left;
+            width: 70%;
+            height: 50px;
+        }
+
+        .lastDiv {
+            position: absolute;
+            margin-top: 260px;
+            padding-left: 310px;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .scalable {
+            border: 2px solid;
+            padding: 20px;
+            width: 300px;
+            resize: both;
+            overflow: auto;
+        }
+
+        .popup {
+  width: 80%;
+  padding: 15px;
+  left: 0;
+  margin-left: 5%;
+  border: 1px solid rgb(1,82,73);
+  border-radius: 10px;
+  color: rgb(1,82,73);
+  background: white;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  top: 15%;
+  box-shadow: 5px 5px 5px #000;
+  z-index: 10001;
+  font-weight: 700;
+  text-align: center;
 }
 
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+.overlay {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.85);
+  z-index: 10000;
+  display :none;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
+@media (min-width: 768px) {
+  .popup {
+    width: 66.66666666%;
+    margin-left: 16.666666%;
+  }
+}
+@media (min-width: 992px) {
+  .popup {
+    width: 80%;
+    margin-left: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .popup {
+    width: 33.33333%;
+    margin-left: 33.33333%;
+  }
 }
 
-.show {
-  display: block;
+.dialog-btn {
+  background-color:#44B78B;
+  color: white;
+  font-weight: 700;
+  border: 1px solid #44B78B;
+  border-radius: 10px;
+  height: 30px;
+  width: 30%;
 }
-.scalable {
-  border: 2px solid;
-  padding: 20px; 
-  width: 300px;
-  resize: both;
-  overflow: auto;
+.dialog-btn:hover {
+  background-color:#015249;
+  cursor: pointer;
 }
+
+
     </style>
 </body>
+
 </html>
