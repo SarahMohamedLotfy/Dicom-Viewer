@@ -7,6 +7,7 @@
     <meta name="description" content="EasyTree, free jquery tree menu" />
    <link href="http://www.easyjstree.com/content/skin-win8/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://www.easyjstree.com/bundles/jquery?v=5r0dFjH__tJcUIAQyQUG4tMptq0H5PoqgaCRzuzpfIs1"></script>
     <script src="http://www.easyjstree.com/Scripts/jquery.easytree.min.js"></script>
 </head>
@@ -47,132 +48,124 @@
             <p style="color:blue;font-family:verdana; font-weight: bold;   font-size: 15px;">Trunk-lpsiteral Leg Endopropesthesis  (mm &#215; mm &#215; cm)</p>
             <p style="font-family:verdana; font-weight: bold;  font-size: 15px;">Recommended prosthesis oversizing relative to the aorta artery is approximately 10-21 %</p>
             
-            <form>
+            <form  id="radioForm" onclick="clickRadioButton()" >
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" checked>23&#215;12&#215;12.0
+                  <input type="radio" name="optradio" value ="23" >23&#215;12&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:150px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">23&#215;12&#215;14.0
+                  <input type="radio" value ="23" name="optradio">23&#215;12&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">23&#215;12&#215;16.0
+                    <input type="radio" value ="23" name="optradio">23&#215;12&#215;16.0
                   </label>
 
-                  <label class="radio-inline" style="margin:150px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">23&#215;12&#215;18.0
-                  </label>
-              </form>
 
-              <form>
+                  <label class="radio-inline" style="margin-right:240px; margin-left:148px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" value ="23" name="optradio">23&#215;12&#215;18.0
+                  </label>
+              
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" >23&#215;14.5&#215;12.0
+                  <input type="radio" value ="23" name="optradio" >23&#215;14.5&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">23&#215;14.5&#215;14.0
+                  <input type="radio" value ="23" name="optradio">23&#215;14.5&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">23&#215;14.5&#215;16.0
+                    <input type="radio" value ="23" name="optradio">23&#215;14.5&#215;16.0
                   </label>
 
                   <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">23&#215;14.5&#215;18.0
+                    <input type="radio" value ="23" name="optradio">23&#215;14.5&#215;18.0
                   </label>
-              </form>
             <hr>
 
-            <form>
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" >26&#215;12&#215;12.0
+                  <input type="radio" value ="26" name="optradio" >26&#215;12&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:150px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">26&#215;12&#215;14.0
+                  <input type="radio" value ="26"name="optradio">26&#215;12&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">26&#215;12&#215;16.0
+                    <input type="radio"value ="26" name="optradio">26&#215;12&#215;16.0
                   </label>
 
-                  <label class="radio-inline" style="margin:150px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">26&#215;12&#215;18.0
+                  <label class="radio-inline" style="margin-left:148px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio"value ="26" name="optradio">26&#215;12&#215;18.0
                   </label>
-              </form>
 
-              <form>
                 <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" >26&#215;14.5&#215;12.0
+                  <input type="radio" value ="26"name="optradio" >26&#215;14.5&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">26&#215;14.5&#215;14.0
+                  <input type="radio" value ="26"name="optradio">26&#215;14.5&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">26&#215;14.5&#215;16.0
+                    <input type="radio"value ="26" name="optradio">26&#215;14.5&#215;16.0
                   </label>
 
                   <label class="radio-inline" style="margin:138px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">26&#215;14.5&#215;18.0
+                    <input type="radio" value ="26"name="optradio">26&#215;14.5&#215;18.0
                   </label>
-              </form>
-              <hr>
-              <form>
-                <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" >28.5&#215;12&#215;12.0
+
+                  <hr>
+
+
+                  <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
+                  <input type="radio" value ="28.5"name="optradio" >28.5&#215;12&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:140px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">28.5&#215;12&#215;14.0
+                  <input type="radio" value ="28.5" name="optradio">28.5&#215;12&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">28.5&#215;12&#215;16.0
+                    <input type="radio" value ="28.5" name="optradio">28.5&#215;12&#215;16.0
                   </label>
 
-                  <label class="radio-inline" style="margin:140px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">28.5&#215;12&#215;18.0
+                  <label class="radio-inline" style="margin-left:138px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" value ="28.5" name="optradio">28.5&#215;12&#215;18.0
                   </label>
-              </form>
 
-              <form>
-                <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
-                  <input type="radio" name="optradio" >28.5&#215;14.5&#215;12.0
+
+                  <label class="radio-inline" style="font-size: 15px; font-weight: bold;">
+                  <input type="radio"  value ="28.5" name="optradio" >28.5&#215;14.5&#215;12.0
                 </label>
 
                 <label class="radio-inline" style="margin:128px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">28.5&#215;14.5&#215;14.0
+                  <input type="radio"  value ="28.5" name="optradio">28.5&#215;14.5&#215;14.0
                 </label>
 
                 <label class="radio-inline" style="margin:10px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">28.5&#215;14.5&#215;16.0
+                    <input type="radio"  value ="28.5" name="optradio">28.5&#215;14.5&#215;16.0
                   </label>
 
                   <label class="radio-inline" style="margin:128px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">28.5&#215;14.5&#215;18.0
+                    <input type="radio"  value ="28.5"name="optradio">28.5&#215;14.5&#215;18.0
                   </label>
-              </form>
-              <hr>
 
-              <form>
+                  <hr>
+
                 <label class="radio-inline" style="margin-left:250px; font-size: 15px;   font-weight: bold; ">
-                  <input type="radio" name="optradio">31&#215;14.5&#215;13.0
+                  <input type="radio"  value ="31"name="optradio">31&#215;14.5&#215;13.0
                 </label>
 
-                <label class="radio-inline" style="margin:148px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">31&#215;14.5&#215;17.0
+                <label class="radio-inline" style="  margin-left:148px; margin-right: 240px; font-size: 15px;   font-weight: bold; ">
+                    <input type="radio" value ="31" name="optradio">31&#215;14.5&#215;17.0
                 </label>
-              </form>
 
-              <form>
                 <label class="radio-inline" style="margin-left:250px; font-size: 15px;   font-weight: bold; ">
-                    <input type="radio" name="optradio">31&#215;14.5&#215;15.0
+                    <input type="radio" value ="31" name="optradio">31&#215;14.5&#215;15.0
                   </label>
               </form>
-            
+     <div id="allContainer">       
             <p style="color:blue;font-family:verdana; font-weight: bold;   font-size: 15px;">Contralateral Leg Endoprosthesis (mm &#215; cm)</p>
             <p style="font-family:verdana; font-weight: bold;  font-size: 15px;">Recommended prosthesis oversizing relative to the iliac artery is approximately 7-25 %</p>
         
@@ -399,6 +392,30 @@
                 </div>
             </div>
             </div>
+            <div class="lastDiv">
+                
+                <div class="navbar">
+                    <a style="font-family:verdana; font-weight: bold; font-size: 15px;">Device Orientation: </a>
+
+                    <div class="dropdown">
+                    <button class="dropbtn" onclick="dropDown()">Standard position - contralateral gate contralateral
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="myDropdown">
+                      <a href="#">Link 1</a>
+                      <a href="#">Link 2</a>
+                      <a href="#">Link 3</a>
+                    </div>
+                    </div> 
+                  </div>
+                  
+  
+              
+                  <button style="margin-left: 600px; margin-top: 50px;">Cancel</button>
+                  <button  >Build</button>
+                
+                  
+                              </div>
             <div class ="overlap">
                 <p>Overlap (mm)</p>
             <form > 
@@ -407,12 +424,18 @@
                 <input type="button" onclick="decrementValue()" value="-" />
               </form>
              </div>
-            <button class="deleteButton" onclick="deleteNodes(); return false;">Delete</button>
-              
+            <button id ="deleteButton" class="deleteButton" onclick="deleteNodes(); return false;">Delete</button>
         </div>
       </div>
+    </div>
    
+
     <script>
+
+    document.getElementById("allContainer").disabled = true;
+    document.getElementById("overlap").disabled = true;
+    document.getElementById("deleteButton").disabled = true;
+
     function canDrop(event, nodes, isSourceNode, source, isTargetNode, target) {
         if (target.text =="Extensions")
         {
@@ -453,7 +476,13 @@
         }
     }
     function dropped(event, nodes, isSourceNode, source, isTargetNode, target) {
+        var str2= source.innerText;
+
+        var part = (str2).substring(1, 4);
+        var partint = parseInt(part) ;
         if (isTargetNode && !isSourceNode) { 
+            if(partint <= radioValue)
+            {
             var targetText= target.text;
             var node = {};
             var str1="";
@@ -470,12 +499,24 @@
             {
                 str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
             }
-            var str2 = source.innerText;
             var res = str1.concat(str2);
             node.text = res;
             easyTree.addNode(node, target.id);
+        }
+        else
+        {
+            if (radioValue==0)
+            {
+                alert("Please choose value from radio");
+            }
+            else
+            {
+            alert("Cannot add bigger than  " + radioValue);
+            }
+        }
          }
         }
+        
         function deleteNodes() {
             var nodes = easyTree.getAllNodes();
             deleteNode(nodes);
@@ -522,6 +563,20 @@
     value++;
     document.getElementById('overlap').value = value;
 }
+var radioValue =0;
+function clickRadioButton()
+{
+    document.getElementById("allContainer").disabled = false;
+    document.getElementById("overlap").disabled = false;
+    document.getElementById("deleteButton").disabled = false;
+
+    console.log("fffff");
+    var form = document.getElementById("radioForm");
+    var val = form.elements["optradio"].value;
+    radioValue=parseInt(val);
+    console.log(parseInt(val));
+}
+
 function decrementValue()
 {
     var value = parseInt(document.getElementById('overlap').value, 10);
@@ -533,6 +588,9 @@ function decrementValue()
 
         function overlapValue()
         {
+            document.getElementById("overlap").disabled = false;
+            document.getElementById("deleteButton").disabled = false;
+
             var nodes = easyTree.getAllNodes();
             var i = 0;
             var j=0;
@@ -552,7 +610,28 @@ function decrementValue()
                     }
                 }
              }
+             for (i = 0; i < nodes[0].children.length; i++) {
+                    if (nodes[0].children[i].isActive)
+                    {
+                        document.getElementById("overlap").disabled = true;
+                        document.getElementById("deleteButton").disabled = true;
+                        console.log("cliccccc");
+                    }
+                }
+             
             }
+            function dropDown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
+    }
+  }
+}   
             
             var easyTree = $('#demo_menu').easytree({
                 enableDnd: true,
@@ -703,6 +782,76 @@ div.scrollHorizontal {
                 width:70%; 
                 height:50px; 
             } 
+            .lastDiv
+{
+    position:absolute;
+    padding-top: 800px;
+}
+.navbar {
+  overflow: hidden;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+.scalable {
+  border: 2px solid;
+  padding: 20px; 
+  width: 300px;
+  resize: both;
+  overflow: auto;
+}
     </style>
 </body>
 </html>
