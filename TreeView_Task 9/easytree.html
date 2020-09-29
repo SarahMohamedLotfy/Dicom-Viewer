@@ -511,6 +511,7 @@
         $(".container2").fadeTo(300, 0.2);
         $(".container3").fadeTo(300, 0.2);
         var contraEnter =true;
+        var lpsiEnter =true;
 
       
 var overlayme = document.getElementById("dialog-container");
@@ -567,6 +568,8 @@ function show_dialog() {
                         }
                         else
                         {
+                            if (target.text == "Contralateral Extensions")
+                            {
                             if (contraEnter == true)
                             {
                                 var answer = window.confirm("You are trying to place an Aortic Extender into an iliac. This treatment option is not within the approved indications for use of the Gore EXCLUDER (R) Bifurcated Endoprothesis. Please refer to the EXCLUDER Instructions for Use for more information. \n \n  If you are sure thatyou would like to proceed, click OK");
@@ -577,7 +580,22 @@ function show_dialog() {
                                     easyTree.addNode(node, target.id);
                                     contraEnter =false;
                                 }
-                            }                              
+                            }     
+                        }        
+                        else
+                        {
+                            if (lpsiEnter == true)
+                            {
+                                var answer = window.confirm("You are trying to place an Aortic Extender into an iliac. This treatment option is not within the approved indications for use of the Gore EXCLUDER (R) Bifurcated Endoprothesis. Please refer to the EXCLUDER Instructions for Use for more information. \n \n  If you are sure thatyou would like to proceed, click OK");
+                                if (answer) {
+                                    str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
+                                    var res = str1.concat(str2);
+                                    node.text = res;
+                                    easyTree.addNode(node, target.id);
+                                    lpsiEnter =false;
+                                }
+                            } 
+                        }                 
                         }
                     }
                     else if (partint < 21 ||partint2 == 7)
@@ -597,20 +615,26 @@ function show_dialog() {
                         }
                         else if (target.text == "lpsilateral Extensions" )
                         {
+                            if (lpsiEnter==true)
+                            {
                             str1 = "GORE ECLUDER Device (OUS): lliac leg:  ";
                             var res = str1.concat(str2);
                             node.text = res;
                             easyTree.addNode(node, target.id);
+                            }
+                            else{
+                                favDialog2.showModal();
+                            }
                         }
                      else{
                         favDialog3.showModal();
                         }
                     }
                     }
-                }
-                else {
-                        alert("Cannot add bigger than  " + radioValue);
+                    else {
+                        alert("Cannot add bigger than  selected radio button");
                     }
+                }
                 }
         
 
@@ -630,6 +654,10 @@ function show_dialog() {
                         if (partint > 21 && i==2 )
                         {
                             contraEnter=true;
+                        }
+                        else if (partint > 21 && i==1 )
+                        {
+                            lpsiEnter=true;
                         }
                         easyTree.removeNode(nodes[0].children[i].children[j].id);
                         console.log(nodes[0].children[i].children[j]);
